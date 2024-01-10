@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FR</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- ---------- Header ---------- -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="nav_logo"><a href="#"><img src="assets/Image/logo.png" alt="Logo"></a></div>
+
+                <div class="nav_menu">
+                    <ul class="nav_list">
+                        <div class="dropdown">
+                            <li class="home"><a href="#">Home</a>
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                              </svg></span>
+                            </li>
+                            <ul class="dropdown_list">
+                                <li><a href="#">Orgaization's Speece</a></li>
+                                <li><a href="#">All Documentation</a></li>
+                                <li><a href="#">Blood Request Cheek</a></li>
+                                <li><a href="#">Profile</a></li>
+                            </ul>
+                        </div>
+                        <li><a href="#">Donation</a></li>
+                        <li><a href="#">Blood request</a></li>
+                        <li><a href="#">Income Expenditure</a></li>
+                        <li><a href="#">Project</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Foundations</a></li>
+                        <button class="logout_m"><a href="#">Logout</a></button>
+                    </ul>
+                    <div class="search">
+                        <form action="#" method="post" class="form_search">
+                            <input type="search" placeholder="Search">
+                            <span type="submit"><img src="assets/Image/search.svg" alt="icon"></span>
+                        </form>
+                        <button class="logout"><a href="#">Logout</a></button>
+                        <div class="nav_toggol"><img src="assets/Image/circled-menu.png" alt=""></div>
+                        <div class="close_toggol"><img src="assets/Image/close.svg" alt=""></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- ---------- Header end ---------- -->
+
+    <!-- ---------- Profile ---------- -->
+    <section>
+        <div class="container">
+            <div class="profile">
+                <div>
+                    <div class="id_profile">
+                        <div class="text_id_profile">
+                            <div class="blue_varify">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                                    <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                                  </svg>
+                            </div>
+                            <div class="img_icon_profile">
+                                <div class="img_profile">
+                                    <img src="assets/Image/profile1.jpg" alt="">
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                                </svg>
+                            </div>
+                            <h3>Md Sibgatullah</h3>
+                            <p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                </svg>
+                                <span>01700000000</span>
+                            </p>
+                            <p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                            </svg>
+                                <span>info.ebondhu@gmail.com</span>
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="content_profile">
+                            <div class="item_profile">
+                                <p>
+                                    <span>Do you want to <br> donate Blood ?</span>
+                                </p>
+                                <div style="display: flex; gap: 5px;">
+                                    <h4 class="varefy_profile" id="bloodWant">Yes</h4>
+                                    <h4 class="varefy_profile">No</h4>
+                                    
+                                </div>
+                            </div>
+                            <div class="item_profile">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                                    </svg>
+                                    <span>NID</span>
+                                </p>
+                                <h4 class="varefy_profile">Verify</h4>
+                            </div>
+                            <div class="item_profile">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                                    </svg>
+                                    <span>BRN</span>
+                                </p>
+                                <h4 class="varefy_profile">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                        <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                    </svg>
+                                </h4>
+                            </div>
+                            <div class="item_profile">
+                                <p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                                    </svg>
+                                    <span>Password</span>
+                                </p>
+                                <h4 class="varefy_profile">Edit</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- adderss profile -->
+                <div class="adderss_profile">
+                    <!-- <h4>Profile</h4> -->
+                    <div class="all_profile">
+                        <div class="profile_content">
+                            <div class="profile_item active">
+                                <h4>Foundations <br> Profile</h4>
+                            </div>
+                            <div class="profile_item">
+                                <h4> Chairman <br> Information</h4>
+                            </div>
+                            <div class="profile_item">
+                                <h4>Derector <br> Address</h4>
+                            </div>
+                            <div class="profile_item">
+                                <h4>Account <br> Information</h4>
+                            </div>
+                            <div class="profile_item">
+                                <h4>Check & <br> Review</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data_profile">
+                        <form action="#" method="post">
+                            <div class="profile_items" id="myProfile">
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="govt">Govt Documentation</label>
+                                        <input type="file" id="govt" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="reg">Resistation No</label>
+                                        <input type="number" id="reg" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Constitution</label>
+                                        <input type="file" id="govt" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="District">District</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="Upzilla">Upzilla</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="District">Union</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="Ward">Ward</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="Village">Village</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="profile_countinue" id="profileNext">
+                                    <input type="submit" value="continue">
+                                </div>
+                            </div>
+                            <div class="profile_items" id="birthAdd">
+                                <div class="img_profile">
+                                    <img src="assets/Image/profile1.jpg" alt="">
+                                </div>
+                                <br>
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                    <label for="name">choose Picture</label>
+                                        <input type="file" id="name" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="fatherName">Father Name</label>
+                                        <input type="text" id="fatherName" placeholder="Father Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="motherName">Mother Name</label>
+                                        <input type="text" id="motherName" placeholder="Mother Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="gender">Gender</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="blood">Blood Group</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Occupation</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="NID">NID No</label>
+                                        <input type="number" id="NID" placeholder="NID" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="">NID Font</label>
+                                        <input type="file" id="" placeholder="NID" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="">NID Backend</label>
+                                        <input type="file" id="" placeholder="NID" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="Birth">Date of Birth</label>
+                                        <input type="date" id="Birth">
+                                    </div>
+                                </div>
+                                <div class="profile_countinue" id="birthNext">
+                                    <input type="submit" value="continue">
+                                </div>
+                            </div>
+                            <div class="profile_items" id="ParmAdd">
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="fatherName">Father Name</label>
+                                        <input type="text" id="fatherName" placeholder="Father Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="motherName">Mother Name</label>
+                                        <input type="text" id="motherName" placeholder="Mother Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="gender">Gender</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="blood">Blood Group</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Occupation</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile_countinue" id="parmNext">
+                                    <input type="submit" value="continue">
+                                </div>
+                            </div>
+                            <div class="profile_items" id="currAdd">
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="fatherName">Father Name</label>
+                                        <input type="text" id="fatherName" placeholder="Father Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="motherName">Mother Name</label>
+                                        <input type="text" id="motherName" placeholder="Mother Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="gender">Gender</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="blood">Blood Group</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Occupation</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile_countinue" id="currNext">
+                                    <input type="submit" value="continue">
+                                </div>
+                            </div>
+                            <div class="profile_items" id="checkProfiles">
+                                <!-- My Profile -->
+                                <h2>My Profile</h2>
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="govt">Govt Documentation</label>
+                                        <input type="file" id="govt" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="reg">Resistation No</label>
+                                        <input type="number" id="reg" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Constitution</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- birthplace Address -->
+                                <h2>Birthplace Address</h2>
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="fatherName">Father Name</label>
+                                        <input type="text" id="fatherName" placeholder="Father Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="motherName">Mother Name</label>
+                                        <input type="text" id="motherName" placeholder="Mother Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="gender">Gender</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="blood">Blood Group</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Occupation</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- current Address -->
+                                <h2>Parmament Address</h2>
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="fatherName">Father Name</label>
+                                        <input type="text" id="fatherName" placeholder="Father Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="motherName">Mother Name</label>
+                                        <input type="text" id="motherName" placeholder="Mother Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="gender">Gender</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="blood">Blood Group</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Occupation</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- current Address -->
+                                <h2>Current Adderss</h2>
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="name">Name</label>
+                                        <input type="text" id="name" placeholder="Your Name" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="fatherName">Father Name</label>
+                                        <input type="text" id="fatherName" placeholder="Father Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="motherName">Mother Name</label>
+                                        <input type="text" id="motherName" placeholder="Mother Name">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="gender">Gender</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" placeholder="Email">
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="phone">Phone</label>
+                                        <input type="number" id="email" placeholder="Phone" required>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="blood">Blood Group</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form_group">
+                                        <label for="occupation">Occupation</label>
+                                        <div class="form_select">
+                                            <select id="gender">
+                                                <option value="select">Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile_countinue" id="currNext">
+                                    <input type="submit" value="submit">
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="bloodPopup">
+            <form action="#" method="post">
+                <div class="form_group">
+                    <label for="weight">Weight</label>
+                    <input type="number" id="weight" placeholder="Your Eeight" required>
+                </div>
+                <div class="form_group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" placeholder="Your Age" required>
+                </div>
+                <div class="form_group">
+                    <label for="sms">Massage</label>
+                    <textarea id="sms" rows="5" placeholder="Massage"></textarea>
+                </div>
+                <div class="profile_countinue">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- ---------- Profile end ---------- -->
+
+    <!-- ---------- footer ---------- -->
+    <footer>
+        <div class="container">
+            <!-- footer add -->
+
+            <!-- footer list -->
+            <div class="footer_data">
+                <ul class="footer_list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <!-- footer help -->
+            <div class="footer_help">
+                <div class="footer_phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                  </svg>
+                </div>
+                <div class="footer_sms">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                      </svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ---------- footer end ---------- -->
+
+     <!-- ---------- JS ---------- -->
+     <script>
+
+        // header
+        const navToggol = document.querySelector('.nav_toggol');
+        const closeToggol = document.querySelector('.close_toggol');
+        navToggol.addEventListener('click',function () {
+            document.querySelector('.nav_list').classList.add('show_list');
+            closeToggol.style.display = "block"
+            navToggol.style.display = "none"
+        })
+
+        closeToggol.addEventListener('click', function () {
+            document.querySelector('.nav_list').classList.remove('show_list');
+            closeToggol.style.display = "none"
+            navToggol.style.display = "block"
+
+        })
+
+        // profile
+        const bloodWant = document.querySelector('#bloodWant');
+        const bloodPopup = document.querySelector('.bloodPopup');
+        const profile = document.querySelector('.profile');
+        const overlay = document.querySelector('.overlay');
+
+        bloodWant.addEventListener('click', function (){
+            overlay.style.display = 'block';
+            bloodPopup.style.display = 'block';
+            profile.style.filter = 'blur(4px)';
+        })
+        overlay.addEventListener('click', function (){
+            bloodPopup.style.display = 'none';
+            overlay.style.display = 'none';
+            profile.style.filter = 'blur(0px)';
+        })
+
+        const myProfile = document.querySelector('#myProfile');
+        const birthAdd = document.querySelector('#birthAdd');
+        const ParmamentAdd = document.querySelector('#ParmAdd');
+        const currentAdd = document.querySelector('#currAdd');
+        const checkProfiles = document.querySelector('#checkProfiles');
+
+        // continue__
+        const profileNext = document.querySelector('#profileNext');
+        const birthNext = document.querySelector('#birthNext');
+        const parmNext = document.querySelector('#parmNext');
+        const currNext = document.querySelector('#currNext');
+
+        function allProfile(){
+            myProfile.style.display = 'none';
+            birthAdd.style.display = 'none';
+            ParmamentAdd.style.display = 'none';
+            currentAdd.style.display = 'none';
+            checkProfiles.style.display = 'none';
+        }
+        profileNext.addEventListener('click', function (){
+            allProfile()
+            birthAdd.style.display = 'block';
+        })
+        birthNext.addEventListener('click', function (){
+            allProfile()
+            ParmamentAdd.style.display = 'block';
+        })
+        parmNext.addEventListener('click', function (){
+            allProfile()
+            currentAdd.style.display = 'block';
+            console.log('clicked');
+        })
+        currNext.addEventListener('click', function (){
+            allProfile()
+            checkProfiles.style.display = 'block';
+        })
+    </script>
+    <!-- ---------- JS end ---------- -->
+</body>
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="nav_logo">
+                    <a href="#"><img src="assets/Image/logo.png" alt="Logo"></a>
+                </div>
+            
+                <div class="nav_menu">
+                    <div class="search">
+                        <button class="Add_member"><a href="#">LogOut</a></button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="container">
+        <div class="fb_home">
+            
+            <div class="fbd">
+                <div class="fb_genarel">
+                    <div class="fbg_close" onclick="fbgClose()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                          </svg>
+                    </div>
+                    <div class="fb_img">
+                        <img src="assets/Image/hero_img.png" alt="img">
+                        <h3>Md munna</h3>
+                    </div>
+                    <hr>
+                    <h2>General</h2>
+                    <hr>
+                    <ul class="fb_list">
+                        <li onclick="memberList()">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                  </svg>
+                            </span>
+                            <a href="#">Member List</a>
+                        </li>
+                        <li onclick="AccountList()">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                  </svg>
+                            </span>
+                            <a href="#">Account</a>
+                        </li>
+                        <li onclick="SmsList()">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                  </svg>
+                            </span>
+                            <a href="#">SMS</a>
+                        </li>
+                        <li onclick="bloodRequest()">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                  </svg>
+                            </span>
+                            <a href="#">Blood Request</a>
+                        </li>
+                        <li onclick="TrackingList()">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                  </svg>
+                            </span>
+                            <a href="#">Tracking</a>
+                        </li>
+                        <li onclick="IdList()">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                  </svg>
+                            </span>
+                            <a href="#">Id Card</a>
+                        </li>
+                        <li onclick="CallList()">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                  </svg>
+                            </span>
+                            <a href="#">Call Center</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fb_db">
+                    <div class="db_head">
+                        <span onclick="fbgShowMenu()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                        </span>
+                        <h1>Dashboard</h1>
+                        <div class="nav_menu">
+                            <div class="search">
+                                <form action="#" method="post" class="form_search">
+                                    <input type="search" placeholder="Search">
+                                    <div type="submit"><img src="assets/Image/search.svg" alt="icon"></div>
+                                </form>
+                                <button class="Add_member"><a href="#">Add Member</a></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ---------- member list ---------- -->
+                    <div class="member_list">
+                        <div class="db_content">
+                            <div class="db_item">
+                                <div class="db_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                    </svg>
+                                </div>
+                                <h1>2500</h1>
+                                <h3>Division Member</h3>
+                            </div>
+                            <div class="db_item">
+                                <div class="db_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                    </svg>
+                                </div>
+                                <h1>2500</h1>
+                                <h3>Union Member</h3>
+                            </div>
+                            <div class="db_item">
+                                <div class="db_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                    </svg>
+                                </div>
+                                <h1>2500</h1>
+                                <h3>Life Member</h3>
+                            </div>
+                            <div class="db_item">
+                                <div class="db_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                    </svg>
+                                </div>
+                                <h1>2500</h1>
+                                <h3>Volenter Member</h3>
+                            </div>
+                            <div class="db_item">
+                                <div class="db_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                    </svg>
+                                </div>
+                                <h1>2500</h1>
+                                <h3>Volenter Member</h3>
+                            </div>
+                            <div class="db_item">
+                                <div class="db_icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                    </svg>
+                                </div>
+                                <h1>2500</h1>
+                                <h3>Volenter Member</h3>
+                            </div>
+                        </div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Id No</th>
+                                    <th>Last blood group</th>
+                                    <th>Last donet time</th>
+                                </tr>
+                                <tr>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                </tr>
+                                <tr>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ---------- member list ---------- -->
+                    <div class="Account_list">
+                        <h2>Income</h2>
+                        <br>
+                        <div class="forntend">
+                            <li>Income</li>
+                            <div class="form_group">
+                                <input type="text" >
+                            </div>
+                            <div class="profile_countinue">
+                                <input type="submit" value="Save">
+                            </div>
+                            <div class="profile_countinue">
+                                <input type="submit" value="Edit">
+                            </div>
+                        </div>
+                        <div class="forntend">
+                            <li>Expenditure</li>
+                            <div class="form_group">
+                                <input type="text" >
+                            </div>
+                            <div class="profile_countinue">
+                                <input type="submit" value="Save">
+                            </div>
+                            <div class="profile_countinue">
+                                <input type="submit" value="Edit">
+                            </div>
+                        </div>
+                        <div class="forntend">
+                            <li>Current</li>
+                            <div class="form_group">
+                                <input type="text" >
+                            </div>
+                            <div class="profile_countinue">
+                                <input type="submit" value="Save">
+                            </div>
+                            <div class="profile_countinue">
+                                <input type="submit" value="Edit">
+                            </div>
+                        </div>
+                        <br>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>On/Off</th>
+                                    <th>Start Date</th>
+                                    <th>Day</th>
+                                    <th>Eidt</th>
+                                </tr>
+                                <tr>
+                                    <td><img src="assets/Image/hero_img.jpg" alt=""></td>
+                                    <td><div class="o_btn" onclick="OnOfBtn()"><span></span></div></td>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                    <td>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                          </svg>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="assets/Image/hero_img.jpg" alt=""></td>
+                                    <td><div class="o_btn" onclick="OnOfBtn()"><span></span></div></td>
+                                    <td>munna</td>
+                                    <td>munna</td>
+                                    <td>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                            <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                          </svg>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- ---------- sms list ---------- -->
+                    <div class="sms_list">
+                        <h1>SMS</h1>
+                        <div class="data_profile">
+                                <form action="#" method="post">
+                                    <div class="profile_sms">
+                                        <div class="SMS_group" onclick="mailSms()">
+                                            <input type="radio" checked name="sms_a" id="mails">
+                                            <label for="mails" >Mail</label>
+                                        </div>
+                                        <div class="SMS_group" onclick="singleSms()">
+                                            <input type="radio" name="sms_a" id="ssms">
+                                            <label for="ssms">Single SMS</label>
+                                        </div>
+                                        <div class="SMS_group" onclick="groupSms()">
+                                            <input type="radio" name="sms_a" id="gsms">
+                                            <label for="gsms">Group sms</label>
+                                        </div>
+                                    </div>
+    
+                                    <!-- mail_sms -->
+                                    <div class="mail_sms" id="smsMail">
+                                        <div class="SMS_group bldr_sms">
+                                            <label for="sms">Massage</label>
+                                            <br>
+                                            <textarea id="sms" rows="7" placeholder="Massage"></textarea>
+                                        </div>
+                                        <div class="profile_countinue">
+                                            <input type="submit" value="submit">
+                                        </div>
+                                    </div>
+    
+                                    <!-- Single SMS -->
+                                    <div class="single_sms" id="smsSingle">
+                                        <br>
+                                        <div class="form_group">
+                                            <label>Image</label>
+                                            <input type="file">
+                                        </div>
+                                        <div class="form_group">
+                                            <label for="pasient">Number</label>
+                                            <input type="number" id="pasient" placeholder="Patient Name">
+                                        </div>
+                                        <div class="SMS_group bldr_sms">
+                                            <label for="sms">Massage</label>
+                                            <textarea id="sms" rows="7" placeholder="Massage"></textarea>
+                                        </div>
+                                        <div class="profile_countinue">
+                                            <input type="submit" value="submit">
+                                        </div>
+                                    </div>
+    
+                                    <!-- Group sms -->
+                                    <div class="group_sms" id="smsGroup">
+                                        <div class="SMS_group bldr_sms">
+                                            <label for="sms">Massage</label>
+                                            <br>
+                                            <textarea id="sms" rows="7" placeholder="Massage"></textarea>
+                                        </div>
+                                        <div class="profile_countinue">
+                                            <input type="submit" value="submit">
+                                        </div>
+    
+                                    </div>
+                                </form>
+                                
+                        </div>
+                    </div>
+                    <!-- ---------- sms list ---------- -->
+                    <div class="BDR_list">
+                        <div class="data_profile">
+                         <form action="#" method="post">
+                            <div class="profile_items">
+                                <h2>Blood Request</h2>
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="Division">Division</label>
+                                        <div class="form_select">
+                                            <select id="gender" required>
+                                                <option value="" selected >Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="District">District</label>
+                                        <div class="form_select">
+                                            <select id="gender" required>
+                                                <option value="" selected >Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="Upzilla">Upzilla</label>
+                                        <div class="form_select">
+                                            <select id="gender" required>
+                                                <option value="" selected >Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="hospital">Hospital</label>
+                                        <div class="form_select">
+                                            <select id="hospital" required>
+                                                <option value="" selected >Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="pasient">Patient Name</label>
+                                        <input type="text" id="pasient" placeholder="Patient Name" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="pasientNum">Patient Phone number</label>
+                                        <input type="number" id="pasientNum" placeholder="Patient Phone number" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="refNam">Reference name</label>
+                                        <input type="name" id="refNam" placeholder="Reference name" required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="refNum">Reference  Phone number </label>
+                                        <input type="number" id="refNum" placeholder="Reference  Phone number " required>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="bldG">Blood Group</label>
+                                        <div class="form_select">
+                                            <select id="bldG" required>
+                                                <option value="" selected >Select</option>
+                                                <option value="a">A+</option>
+                                                <option value="ab">B</option>
+                                                <option value="o">O+</option>
+                                                <option value="b">B</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form_group">
+                                        <label for="bldG">How many bag of blood</label>
+                                        <div class="form_select">
+                                            <select id="bldG" required>
+                                                <option value="" selected >Select</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form_group bldr_sms">
+                                    <label for="sms">Massage</label>
+                                    <textarea id="sms" rows="7" placeholder="Massage"></textarea>
+                                </div>
+                                <div class="profile_countinue">
+                                    <input type="submit" value="submit">
+                                </div>
+                            </div>
+                         </form>
+                        </div>
+                    </div>
+                    <!-- ---------- tracking ---------- -->
+                    <div class="tracking_list">
+                        <br>
+                        <h3>Tracking</h3>
+                        <br>
+                        <div class="data_profile">
+                        <form action="#" method="post">
+                            <div class="profile_items">
+                                <div class="profile_form">
+                                    <div class="form_group">
+                                        <label for="Division">Status</label>
+                                        <div class="form_select">
+                                            <select id="gender" required>
+                                                <option value="" selected >Select</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile_countinue">
+                                    <input type="submit" value="submit">
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                        <table>
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <th>Account No</th>
+                                <th>Transction Id</th>
+                                <th>Last blood group</th>
+                                <th>Last donet time</th>
+                            </tr>
+                            <tr>
+                                <td>munna</td>
+                                <td>munna</td>
+                                <td>munna</td>
+                                <td>munna</td>
+                                <td>munna</td>
+                            </tr>
+                            <tr>
+                                <td>munna</td>
+                                <td>munna</td>
+                                <td>munna</td>
+                                <td>munna</td>
+                                <td>munna</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    <!-- ---------- Id Card ---------- -->
+                    <div class="Id_list">
+                        <div class="Id_card">
+                            <div class="idCard">
+                    <div class="idc_logo">
+                        <img src="assets/Image/logo.png" alt="logo">
+                    </div>
+                    <div class="idc_img">
+                        <img src="assets/Image/profile.jpg" alt="member img">
+                    </div>
+                    <div class="idc_text">
+                        <h4>Md. Motaher Hossain</h4>
+                        <h4>(Member)</h4>
+                        <table>
+                            <tr>
+                                <th>ID</th>
+                                <td>: 546354143</td>
+                            </tr>
+                            <tr>
+                                <th>Blood G</th>
+                                <td>: A+</td>
+                            </tr>
+                        </table>
+                    </div>
+                            </div>
+                            <div class="idCard id_back">
+                    <h4>If Found,Please return to:</h4>
+                    <div class="idc_logo">
+                        <img src="assets/Image/logo.png" alt="logo">
+                    </div>
+                    <div class="idc_dtl">
+                        <div class="idc_item">
+                            <div class="idc_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                </svg>
+                            </div>
+                            <h6>3543654653</h6>
+                        </div>
+                        <div class="idc_item">
+                            <div class="idc_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                            </div>
+                            <h6>sibgatullahmunna@gmail.com</h6>
+                        </div>
+                        <div class="idc_item">
+                            <div class="idc_icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                </svg>
+                            </div>
+                            <h6>bangladesh, Dhaka, khulna, jhenaidah, kushtia</h6>
+                        </div>
+                    </div>
+                    <div class="id_footer">
+                        <div class="id_q">
+                            <img src="assets/Image/profile1.jpg" alt="">
+                        </div>
+                        <div class="id_s">
+                            <i><small>munna</small></i>
+                            <h6>Authorized</h6>
+                            <h6>Signature</h6>
+                        </div>
+                    </div>
+                            </div>
+                        </div>
+                        <button>Download</button>
+                        <button>Print</button>
+                    </div>
+                    <!-- ---------- Call center ---------- -->
+                    <div class="call_list">
+                        <div class="module">
+                            <form action="#" method="post">
+                                    <div class="form_search call_search">
+                                        <input type="search" placeholder="Search">
+                                        <span type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                          </svg>
+                                        </span>
+                                    </div>
+    
+                                    <div class="group_sms">
+                                        <div class="SMS_group bldr_sms">
+                                            <label for="sms">Massage</label>
+                                            <br>
+                                            <textarea id="sms" rows="7" placeholder="Massage"></textarea>
+                                        </div>
+                                        
+                                        <label>Search</label>
+                                        <div class="form_search call_search">
+                                            <input type="search" placeholder="Search">
+                                            <span type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                              </svg>
+                                            </span>
+                                        </div>
+                                        <div class="SMS_group bldr_sms">
+                                            <label for="sms">Forword</label>
+                                            <div class="form_select">
+                                                <select id="gender" required>
+                                                    <option value="" selected >Select</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+    
+                                        <div class="profile_countinue">
+                                            <input type="submit" value="Forword">
+                                        </div>
+        
+                                    </div>
+                            </form>
+                            <div class="module_content">
+                                <div class="module_item">
+                                    <div class="module_active">
+                                        <h4>Module <span>01</span></h4>
+                                        <br>
+                                        <div class="SMS_group">
+                                            <label for="Activity">Activity</label>
+                                            <input type="radio" name="sms_a1" id="Activity">
+                                        </div>
+                                    </div>
+                                    <div class="module_data">
+                                        <div>
+                                            <p>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                                </svg>
+                                                </span>
+                                                Lorem ipsum dolor, 
+                                                sit amet consectetur adipisicing elit. Recusandae, 
+                                                repellendus? Omnis similique autem corporis sint!
+                                            </p>
+                                            <small>Lorem ipsum dolor</small>
+                                        </div>
+                                        <br>
+                                        <div>
+                                            <p>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                                </svg>
+                                                </span>
+                                                Lorem ipsum dolor, 
+                                                sit amet consectetur adipisicing elit. Recusandae, 
+                                                repellendus? Omnis similique autem corporis sint!
+                                            </p>
+                                            <small>Lorem ipsum dolor</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="module_item">
+                                    <div class="module_active">
+                                        <h4>Module <span>02</span></h4>
+                                        <br>
+                                        <div class="SMS_group">
+                                            <label for="Activity2">Activity</label>
+                                            <input type="radio" name="sms_a" id="Activity2">
+                                        </div>
+                                        <div class="SMS_group">
+                                            <label for="Activity3">Activity</label>
+                                            <input type="radio" name="sms_a" id="Activity3">
+                                        </div>
+                                    </div>
+                                    <div class="module_data">
+                                        <div>
+                                            <p>
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                                </svg>
+                                                </span>
+                                                Lorem ipsum dolor, 
+                                                sit amet consectetur adipisicing elit. Recusandae, 
+                                                repellendus? Omnis similique autem corporis sint!
+                                            </p>
+                                            <small>Lorem ipsum dolor</small>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Account</th>
+                                    <th>Name</th>
+                                    <th>Mobail Number</th>
+                                    <th>Blood Group</th>
+                                    <th>See</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="#">munna</a></td>
+                                    <td><a href="#">munna</a></td>
+                                    <td><a href="#">munna</a></td>
+                                    <td><a href="#">munna</a></td>
+                                    <td><a href="#">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                      </svg></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const fbGenarel = document.querySelector('.fb_genarel');
+        function fbgShowMenu() {
+            fbGenarel.style.left = '1%'
+        }
+        function fbgClose() {
+            fbGenarel.style.left = '-100%'
+        }
+        // ---------- main admin ----------
+        const MemberList = document.querySelector('.member_list');
+        const Account = document.querySelector('.Account_list');
+        const smsList = document.querySelector('.sms_list');
+        const BDRList = document.querySelector('.BDR_list');
+        const trackingList = document.querySelector('.tracking_list');
+        const IDList = document.querySelector('.Id_list');
+        const callList = document.querySelector('.call_list');
+        function ListAll(){
+            MemberList.style.display = 'none';
+            Account.style.display = 'none';
+            smsList.style.display = 'none';
+            BDRList.style.display = 'none';
+            trackingList.style.display = 'none';
+            IDList.style.display = 'none';
+            callList.style.display = 'none';
+        }
+        // member list 
+        function memberList() {
+            ListAll();
+            MemberList.style.display = 'block';
+        }
+        // AccountList list 
+        function AccountList() {
+            ListAll();
+            Account.style.display = 'block';
+        }
+        // SmsList list 
+        function SmsList() {
+            ListAll();
+            smsList.style.display = 'block';
+        }
+        
+        // sms sub function design---------------------
+        const smsMail = document.querySelector('#smsMail');
+        const smsSingle = document.querySelector('#smsSingle');
+        const smsGroup = document.querySelector('#smsGroup');
+        function allsms(){
+            smsMail.style.display = 'none';
+            smsSingle.style.display = 'none';
+            smsGroup.style.display = 'none';
+        }
+        function mailSms() {
+            allsms()
+            smsMail.style.display = 'block';
+        }
+        function singleSms() {
+            allsms()
+            smsSingle.style.display = 'block';
+        }
+        function groupSms() {
+            allsms()
+            smsGroup.style.display = 'block';
+        }
+        // sms end--------------------------------------------------------
+        // bloodRequest list 
+        function bloodRequest() {
+            ListAll();
+            BDRList.style.display = 'block';
+        }
+        // TrackingList list 
+        function TrackingList() {
+            ListAll();
+            trackingList.style.display = 'block';
+        }
+        // IdList list 
+        function IdList() {
+            ListAll();
+            IDList.style.display = 'block';
+        }
+        // CallList list 
+        function CallList() {
+            ListAll();
+            callList.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

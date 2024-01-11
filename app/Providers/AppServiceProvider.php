@@ -11,9 +11,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        $this->app->bind(
+            'App\Interfaces\WardInterface',
+            'App\Repository\WardRepository',
+        );
     }
 
     /**

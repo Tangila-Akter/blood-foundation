@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\District;
 
 class Division extends Model
 {
@@ -82,5 +83,11 @@ class Division extends Model
         }
 
         return $query->where('id', $user->division_id);
+    }
+
+    public static function getDistrict($division)
+    {
+        $data = District::where('division_id',$division)->get();
+        return $data;
     }
 }

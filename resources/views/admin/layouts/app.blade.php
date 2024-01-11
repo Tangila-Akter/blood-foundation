@@ -29,7 +29,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="{{ get_system_favicon() }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ get_system_favicon() }}">
     <!-- END Icons -->
-    
+
 
     @stack('css')
 
@@ -131,7 +131,7 @@
 
     <script src="{{ asset('admin/assets/js/admin.app.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
-    
+
     <script src="{{ asset('admin/assets/js/jquery.form.js') }}"></script>
     {{-- <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script> --}}
 
@@ -160,7 +160,7 @@
     </script>
 
     <script>
-        // view modal script 
+        // view modal script
         $(document).on('click', '.show-modal', function() {
             let self = $(this);
             let url = self.data('url');
@@ -185,7 +185,7 @@
 
 
 
-        // submit form script 
+        // submit form script
         $(document).on('submit', '.submit-form', function(e) {
             e.preventDefault();
             let self = $(this);
@@ -196,21 +196,28 @@
             self.find('button[type="submit"]').attr("disabled");
 
             let options = {
-                // available options: 
-                beforeSubmit: showRequest, // pre-submit callback 
-                url: url, // override for form's 'action' attribute 
-                type: 'post', // 'get' or 'post', override for form's 'method' attribute 
-                dataType: 'json', // 'xml', 'script', or 'json' (expected server response type) 
-                //clearForm: true        // clear all form fields after successful submit 
-                // resetForm: true,        // reset the form after successful submit 
+                // available options:
+                beforeSubmit: showRequest, // pre-submit callback
+                url: url, // override for form's 'action' attribute
+                type: 'post', // 'get' or 'post', override for form's 'method' attribute
+                dataType: 'json', // 'xml', 'script', or 'json' (expected server response type)
+                //clearForm: true        // clear all form fields after successful submit
+                // resetForm: true,        // reset the form after successful submit
                 success: function(response) {
                     console.log(response)
                     get_notify(response)
                     self.find('button[type="submit"]').text(old_text);
                 },
                 error: function(response) {
-                    console.log(response)
-                    get_notify(response)
+                    if(response.status == 422)
+                    {
+                        let err = response.responseJSON.errors;
+                        Object.keys(err).forEach(key => {
+                            res = err[key][0];
+                            showError(res);
+                        });
+                    }
+                    // console.log(response.status);
                     self.find('button[type="submit"]').text(old_text);
                 },
                 statusCode: {
@@ -250,31 +257,31 @@
                 }
             };
 
-            // inside event callbacks 'this' is the DOM element so we first 
-            // wrap it in a jQuery object and then invoke ajaxSubmit 
+            // inside event callbacks 'this' is the DOM element so we first
+            // wrap it in a jQuery object and then invoke ajaxSubmit
             $(this).ajaxSubmit(options);
 
-            // !!! Important !!! 
-            // always return false to prevent standard browser submit and page navigation 
+            // !!! Important !!!
+            // always return false to prevent standard browser submit and page navigation
             return false;
         });
 
         function showRequest(formData, jqForm, options) {
-            // formData is an array; here we use $.param to convert it to a string to display it 
-            // but the form plugin does this for you automatically when it submits the data 
+            // formData is an array; here we use $.param to convert it to a string to display it
+            // but the form plugin does this for you automatically when it submits the data
             var queryString = $.param(formData);
 
-            // jqForm is a jQuery object encapsulating the form element.  To access the 
-            // DOM element for the form do this: 
-            // var formElement = jqForm[0]; 
+            // jqForm is a jQuery object encapsulating the form element.  To access the
+            // DOM element for the form do this:
+            // var formElement = jqForm[0];
 
-            // here we could return false to prevent the form from being submitted; 
-            // returning anything other than false will allow the form submit to continue 
+            // here we could return false to prevent the form from being submitted;
+            // returning anything other than false will allow the form submit to continue
             return true;
         }
 
 
-        // change status script 
+        // change status script
         $(document).on('click', '.bulk_change, .bulk_delete', function() {
             if ($('.checkbox:checked').length <= 0) {
                 $('#bulk_action').addClass('d-none');
@@ -302,15 +309,22 @@
 
 
 
-     
+        function showError(res)
+        {
+            Dashmix.helpers('jq-notify', {
+                type: 'danger',
+                icon: 'fa fa-info me-1',
+                message: res
+            });
+        }
 
 
 
 
-        // get notification script 
+        // get notification script
         function get_notify(response) {
 
-            
+
 
             if (response.errors) {
                 response.errors.forEach(error => {
@@ -380,6 +394,7 @@
             image_src.attr('src', $url);
         }
     </script>
+
 </body>
 
 </html>

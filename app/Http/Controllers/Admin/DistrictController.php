@@ -12,6 +12,11 @@ use App\Repository\DistrictRepository;
 
 class DistrictController extends Controller
 {
+    protected $path;
+    public function __construct()
+    {
+        $this->path = 'admin.districts';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +24,7 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        return view('admin.districts.index');
+        return view($this->path.'.index');
     }
 
     /**
@@ -29,7 +34,7 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        return view('admin.districts.create');
+        return view($this->path.'.create');
     }
 
     /**
@@ -63,7 +68,7 @@ class DistrictController extends Controller
     public function edit($id)
     {
         $district = District::findOrFail($id);
-        return view('admin.districts.edit', compact('district'));
+        return view($this->path.'.edit', compact('district'));
     }
 
     /**
@@ -97,7 +102,7 @@ class DistrictController extends Controller
      */
     public function delete($id)
     {
-        return view('admin.districts.delete', compact('id'));
+        return view($this->path.'.delete', compact('id'));
     }
 
 
@@ -109,7 +114,7 @@ class DistrictController extends Controller
             $datas = DistrictRepository::get($request);
         }
 
-        return view('admin.districts.data', compact('datas'));
+        return view($this->path.'.data', compact('datas'));
     }
 
     public function translation($id, $lang_id)
@@ -123,17 +128,17 @@ class DistrictController extends Controller
         }else{
             return response()->json(['error' => 'You Have No Language Active.Someting went to wrong. please try again!']);
         }
-       
+
     }
 
     public function save_translation(Request $request, $id, $lang_id)
     {
-        
+
         $input = $request->except('_token');
 
         $input['district_id'] = $id;
         $input['language_id'] = $lang_id;
-        
+
 
         if(DistrictTranslation::updateOrCreate(['language_id' => $lang_id, 'district_id' => $id], $input)){
             return response()->json(['success' => 'District Transalation updated successfully done!']);
@@ -141,7 +146,7 @@ class DistrictController extends Controller
         }else{
             return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
         }
-        
+
     }
 
 
@@ -166,22 +171,22 @@ class DistrictController extends Controller
 
 
         return view('admin.districts.all-translation',compact('districts','language'));
-        
+
     }
 
 
     public function save_all_translation(Request $request, $id)
     {
-       
+
         $language_id = $id;
         $total_request = count($request->id);
 
         DB::beginTransaction();
-        for ($i=0; $i < $total_request; $i++) { 
+        for ($i=0; $i < $total_request; $i++) {
             $input['language_id'] = $language_id;
             $input['district_id'] = $request->id[$i];
             $input['title'] = $request->title[$i];
-    
+
             DistrictTranslation::updateOrCreate(['language_id' => $language_id, 'district_id' => $input['district_id']], $input);
         }
         DB::commit();

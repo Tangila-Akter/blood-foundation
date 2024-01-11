@@ -53,6 +53,17 @@ class Union extends Model
         return $this->hasMany(Village::class, 'union_id', 'id');
     }
 
+    public function ward()
+    {
+        return $this->hasMany('App\Models\Ward','union_id','id');
+    }
+
+    public static function getThisWard($union)
+    {
+        $data = Ward::where('union_id',$union)->get();
+        return $data;
+    }
+
     protected static function boot()
     {
         parent::boot();

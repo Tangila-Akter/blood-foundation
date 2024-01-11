@@ -20,6 +20,7 @@ class CreateWardsTable extends Migration
             $table->foreignId('upazilla_id')->constrained('upazillas')->onDelete('cascade');
             $table->foreignId('union_id')->constrained('unions')->onDelete('cascade');
             $table->string('title');
+            $table->string('title_bn');
             $table->foreignId('created_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
         });
@@ -32,6 +33,7 @@ class CreateWardsTable extends Migration
      */
     public function down()
     {
+        // Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('wards');
     }
 }

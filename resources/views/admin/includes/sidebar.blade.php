@@ -89,12 +89,18 @@
                         <span class="nav-main-link-name">{{ trans('Union') }}</span>
                     </a>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link " href="{{ route('admin.ward.index') }}">
+                        <i class="nav-main-link-icon fa fa-border-all"></i>
+                        <span class="nav-main-link-name">{{ trans('Ward') }}</span>
+                    </a>
+                </li>
 
-              
+
 
                 <li class="nav-main-heading">Common Section</li>
-                
-                @can('language-list')  
+
+                @can('language-list')
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ Route::currentRouteName() == 'admin.languages.index' ? 'active' : '' }}" href="{{ route('admin.languages.index') }}">
                         <i class="nav-main-link-icon fa fa-border-all"></i>
@@ -111,8 +117,8 @@
                 </li>
 
                 <li class="nav-main-heading">Frontend Section</li>
-               
-               
+
+
                 <li class="nav-main-item">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="false" href="#">

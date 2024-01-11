@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UnionController;
 use App\Http\Controllers\Admin\UpazillaController;
 use App\Http\Controllers\Admin\VillageController;
 use App\Http\Controllers\Admin\DeveloperController;
+use App\Http\Controllers\Admin\WardController;
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login');
@@ -83,6 +84,17 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::post('operators-bulk-update', [AdminController::class, 'bulk_update'])->name('operators.bulk_update');
         Route::get('operator-assign-location/{id}', [AdminController::class, 'assign_location'])->name('operators.assign_location');
         Route::post('operator-assign/{id}', [AdminController::class, 'assign'])->name('operators.assign');
+
+        Route::resource('ward',WardController::class)->names('ward');
+
+        Route::get('find_district',[WardController::class,'find_district'])->name('ward.find_district');
+        Route::get('find_upazila',[WardController::class,'find_upazila'])->name('ward.find_upazila');
+        Route::get('find_union',[WardController::class,'find_union'])->name('ward.find_union');
+        Route::get('find_all_district',[WardController::class,'find_all_district'])->name('ward.find_all_district');
+        Route::get('find_all_upazila',[WardController::class,'find_all_upazila'])->name('ward.find_all_upazila');
+        Route::get('find_all_union',[WardController::class,'find_all_union'])->name('ward.find_all_union');
+
+        Route::get('get_ward',[WardController::class,'get_ward'])->name('ward.get_data');
 
     });
 });

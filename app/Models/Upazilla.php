@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Union;
 
 class Upazilla extends Model
 {
@@ -83,5 +84,11 @@ class Upazilla extends Model
         }
 
         return $query->where('id', null); // Return empty result
+    }
+
+    public static function getUnion($upazila)
+    {
+        $data = Union::where('upazilla_id',$upazila)->get();
+        return $data;
     }
 }

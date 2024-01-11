@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\user\UserFoundationController;
+use App\Http\Controllers\Admin\WardController;
+use App\Http\Controllers\LocalizationController;
 
 
 /*
@@ -23,6 +25,8 @@ use App\Http\Controllers\user\UserFoundationController;
 // });
 
 
+Route::get('setLocale',[LocalizationController::class,'setLocale'])->name('app.setlocale');
+
  Route::get('/',[UserAuthController::class,'home'])->name('home');
 
 Route::get('/login',[UserAuthController::class,'login'])->name('login');
@@ -39,6 +43,9 @@ Route::get('blood_request',[\App\Http\Controllers\User\UserProfileController::cl
 Route::post('blood_request_upload',[\App\Http\Controllers\User\UserProfileController::class,'blood_request_upload'])->name('bloodRequestUpload');
 Route::get('contact_foundation/{id}',[UserFoundationController::class,'contactFoundation'])->name('contactFoundation');
 Route::post('contact_foundation_upload/{f_id}',[UserFoundationController::class,'contactFoundationUpload'])->name('contactFoundationUpload');
+
+
+
 });
 
 

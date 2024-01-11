@@ -22,6 +22,15 @@
         </div>
         <!-- END Left Section -->
 
+        <div class="space-x-1">
+            <form action="{{route('app.setlocale')}}" method="GET">
+                <select class="form-select form-select-sm" name="locale" onchange="this.form.submit()">
+                    <option @if(config('app.locale') == 'en') selected @endif value="en">English</option>
+                    <option @if(config('app.locale') == 'bn') selected @endif value="bn">বাংলা</option>
+                </select>
+            </form>
+        </div>
+
         <!-- Right Section -->
         <div class="space-x-1">
             <!-- User Dropdown -->
@@ -37,7 +46,7 @@
                         User Options
                     </div>
                     <div class="p-2">
-                       
+
                         <a class="dropdown-item" href="">
                             <i class="far fa-fw fa-file-alt me-1"></i> Invoice
                         </a>

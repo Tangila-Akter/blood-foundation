@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Upazilla;
 
 class District extends Model
 {
@@ -79,5 +80,11 @@ class District extends Model
         }
 
         return $query->where('id', null); // Return empty result
+    }
+
+    public static function getUpazila($district)
+    {
+        $data = Upazilla::where('district_id',$district)->get();
+        return $data;
     }
 }

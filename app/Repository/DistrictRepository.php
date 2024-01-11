@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Request\DistrictRequest;
 
 class DistrictRepository
 {
-    
+
     public static function get($request = null)
     {
         $districts = District::orderBy('division_id', 'ASC');
@@ -28,13 +29,8 @@ class DistrictRepository
        return $districts->get();
     }
 
-    public static function create($request)
+    public static function create(DistrictRequest $request)
     {
-        $validator = Validator::make($request->all(),[
-            "division_id" => "required",
-            "title.*" => ['required', new UniqueTitle('District', 'division_id', $request->division_id)],
-        ]);
-
         $input = $request->except('_token');
 
         if($validator->fails()){
@@ -58,10 +54,10 @@ class DistrictRepository
                     DB::rollBack();
                     return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
                 }
-                
+
             }
 
-         
+
         }
     }
 
@@ -105,7 +101,7 @@ class DistrictRepository
         if($request->has('status') && $request->status == 1){
             $input['status'] = 1;
         }
-   
+
         if($request->has('ids')){
             $ids = $request->ids;
             foreach($ids as $id){

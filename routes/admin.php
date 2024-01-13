@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UpazillaController;
 use App\Http\Controllers\Admin\VillageController;
 use App\Http\Controllers\Admin\DeveloperController;
 use App\Http\Controllers\Admin\WardController;
+use App\Http\Controllers\Admin\CarouselController;
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login');
@@ -95,6 +96,13 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('find_all_union',[WardController::class,'find_all_union'])->name('ward.find_all_union');
 
         Route::get('get_ward',[WardController::class,'get_ward'])->name('ward.get_data');
+
+        //============ Carousel =============
+        Route::get('carousel',[CarouselController::class,'index'])->name('carousel.index');
+        Route::post('carousel_upload', [CarouselController::class, 'store'])->name('carousel.store');
+        Route::get("/edit/{id}", [CarouselController::class, "edit"])->name('carousel.edit');
+        Route::post("/update/{id}", [CarouselController::class, "update"])->name('carousel.update');
+        Route::get("/delete/{id}", [CarouselController::class, "destroy"])->name('carousel.delete');
 
     });
 });

@@ -127,9 +127,9 @@
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link " href="">
+                            <a class="nav-main-link " href="{{route('admin.carousel.index')}}">
                                 <i class="nav-main-link-icon fa fa-border-all"></i>
-                                <span class="nav-main-link-name">{{ trans('Approach') }}</span>
+                                <span class="nav-main-link-name">Carousel</span>
                             </a>
                         </li>
                     </ul>

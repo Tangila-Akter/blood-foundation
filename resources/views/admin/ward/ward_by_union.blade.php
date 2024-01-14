@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Union
+    Ward
 @endsection
 
 @section('breadcrumb')
-    <h1 class="flex-grow-1 fs-3 fw-bold my-2 my-sm-3">Union</h1>
+    <h1 class="flex-grow-1 fs-3 fw-bold my-2 my-sm-3">Ward</h1>
     <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Admin</li>
@@ -26,7 +26,10 @@
                 <li class="breadcrumb-item">{{ get_district_by_id(request()->get('upazilla_id')) }}</li>
             @endif
 
-            <li class="breadcrumb-item active" aria-current="page">Union</li>
+            <li class="breadcrumb-item" aria-current="page">
+               <a href="{{ route('admin.unions.index') }}">Union</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Ward</li>
         </ol>
     </nav>
 @endsection
@@ -38,9 +41,7 @@
             <!-- Top Products -->
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
-                    <h3 class="block-title">List Of Union
-
-
+                    <h3 class="block-title">List Of Ward -- of {{$data['union']->title}}
                         @if (request()->has('upazilla_id'))
                          --  {{ get_upazilla_by_id(request()->get('upazilla_id')) }}  Upazilla
                         @endif
@@ -52,30 +53,18 @@
                         -- of {{ get_division_by_id(request()->get('division_id')) }}  Division
                        @endif
                     </h3>
-                    @if (request()->has('upazilla_id'))
-                    <div class="block-options">
-                        <div class="dropdown font-sans-serif d-inline-block">
-                            <button class="btn btn-sm btn-info dropdown-toggle" id="dropdownMenuButton" type="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Translate
-                                All</button><span class="caret"> </span>
-                            <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="dropdownMenuButton">
-                                <div class="px-2 py-3">
-                                    {!! get_translatable_badge('admin.unions.all_translation', null, 'upazilla_id', request()->get('upazilla_id')) !!}
-                                </div>
-                            </div>
-                        </div>
 
+                    <div class="block-options">
                         <button type="button" class="btn btn-sm btn-primary show-modal"
-                            data-url="{{ route('admin.unions.create', ['upazilla_id' => request()->get('upazilla_id')]) }}">
+                            data-url="{{ route('admin.ward.create_new_ward',$data['union']->id) }}">
                             Create New
                         </button>
                     </div>
-                    @endif
+
                 </div>
             </div>
             <!-- END Top Products -->
-
-            <div id="data-view">
+            <div id="data-view" class="">
                 <x-card-skeleton></x-card-skeleton>
             </div>
         </div>
@@ -85,20 +74,32 @@
 @endsection
 
 @push('scripts')
+
     <script>
-        function get_data() {
+        function get_data()
+        {
+            let union = "{{ $data['union']->id }}";
+            // alert(union);
             $.ajax({
-                url: @json(route('admin.unions.get_data', ['upazilla_id' => request()->get('upazilla_id')])),
-                method: 'GET',
-                success: function(response) {
-                    $('#data-view').html(response);
+                headers : {
+                    'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+                },
+
+                url : '{{ route('admin.ward.getunion_ward') }}',
+                type : 'GET',
+                data : {union},
+                success: (res) => {
+                    $('#data-view').html(res);
                 }
             });
         }
 
-        $(document).ready(function() {
+        $(document).ready(function(){
             get_data();
         });
+    </script>
+
+    <script>
 
         $(document).on('input', '.inputTextArea', function() {
                 var inputText = $(this).val();

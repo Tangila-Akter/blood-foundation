@@ -9,9 +9,11 @@ interface BaseInterface{
 
     public function store($request);
 
-    public function edit();
+    public function edit($id);
 
-    public function destroy();
+    public function update($data,$id);
+
+    public function destroy($id);
 
     public function restore();
 

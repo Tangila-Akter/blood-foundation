@@ -60,14 +60,34 @@ class WardRepository implements WardInterface{
         }
     }
 
-    public function edit()
+    public function edit($id)
     {
-
+        $data['data'] = Ward::find($id);
+        return $this->view($this->path,'edit',$data);
     }
 
-    public function destroy()
+    public function update($request,$id)
     {
+        $data = array(
+            'title'             => $request->title,
+            'title_bn'             => $request->title_bn,
+        );
+        $update = Ward::find($id)->update($data);
 
+        if($update)
+        {
+            return response()->json(['success' => 'Ward Updated Successfully']);
+        }
+        else
+        {
+            return response()->json(['error' => 'Ward Not Updated!']);
+        }
+    }
+
+    public function destroy($id)
+    {
+        Ward::find($id)->delete();
+        return response()->json(['success' => 'Ward Delete Successfully']);
     }
 
     public function restore()
@@ -134,7 +154,11 @@ class WardRepository implements WardInterface{
             <option value="">-- Select Union --</option>';
             foreach($data as $v)
             {
-                $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                $check = Ward::where('union_id',$v->id)->count();
+                if($check == 0)
+                {
+                    $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                }
             }
             $output.='</select>';
             return $output;
@@ -150,7 +174,7 @@ class WardRepository implements WardInterface{
         $data = Division::getDistrict($division);
         if(count($data) > 0)
         {
-            $output = '<select class="form-select form-select-sm js-select" name="district" id="district" onchange="return findAllUpazila()">
+            $output = '<select class="form-select form-select-sm js-select" name="district" id="district_id" onchange="return findAllUpazila()">
             <option value="">-- Select District --</option>';
             foreach($data as $v)
             {
@@ -170,7 +194,7 @@ class WardRepository implements WardInterface{
         $data = District::getUpazila($district);
         if(count($data) > 0)
         {
-            $output = '<select class="form-select form-select-sm js-select" name="upazila" id="upazila" onchange="return findAllUnion()">
+            $output = '<select class="form-select form-select-sm js-select" name="upazila" id="upazila_id" onchange="return findAllUnion()">
             <option value="">-- Select Upazila --</option>';
             foreach($data as $v)
             {
@@ -192,7 +216,7 @@ class WardRepository implements WardInterface{
         $data = Upazilla::getUnion($upazila);
         if(count($data) > 0)
         {
-            $output = '<select class="form-select form-select-sm js-select" name="union" id="union" onchange="getWard()">
+            $output = '<select class="form-select form-select-sm js-select" name="union" id="union_id" onchange="getWard()">
             <option value="">-- Select Union --</option>';
             foreach($data as $v)
             {
@@ -204,6 +228,41 @@ class WardRepository implements WardInterface{
         else
         {
             return '<b class="text-danger">No Union Found!</b>';
+        }
+    }
+
+    public function by_union($union)
+    {
+        $data =[];
+        $data['union'] = Union::find($union);
+        return view($this->path.'.ward_by_union',compact('data'));
+    }
+
+    public function create_ward($union_id)
+    {
+        $data['union_id'] = $union_id;
+        return $this->view($this->path,'create_new_ward',$data);
+    }
+
+    public function save_ward($data)
+    {
+        $union = Union::find($data->union_id);
+        $data = array(
+            'division_id'       => $union->division_id,
+            'district_id'       => $union->district_id,
+            'upazilla_id'       => $union->upazilla_id,
+            'union_id'          => $data->union_id,
+            'title'             => $data->title,
+            'title_bn'             => $data->title_bn,
+        );
+        $create = Ward::create($data);
+        if($create)
+        {
+        return response()->json(['success' => 'Ward Created Successfully']);
+        }
+        else
+        {
+            return response()->json(['error' => 'Ward Not Created!']);
         }
     }
 }

@@ -67,7 +67,7 @@
 
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12 mt-4" id="">
-                    <select class="form-select form-select-sm js-select" name="division" id="division" onchange="return getAllDistrict()">
+                    <select class="form-select form-select-sm js-select" name="division" id="division_id" onchange="return getAllDistrict()">
                         <option value="">-- Select Division --</option>
                        @if(isset($param['division']))
                        @foreach ($param['division'] as $d)
@@ -105,7 +105,7 @@
     function getAllDistrict()
     {
 
-        let division = $('#division').val();
+        let division = $('#division_id').val();
         if(division != '')
         {
             $.ajax({
@@ -137,7 +137,7 @@
 
     function findAllUpazila()
     {
-        let district = $('#district').val();
+        let district = $('#district_id').val();
         if(district != '')
         {
             $.ajax({
@@ -169,7 +169,7 @@
 
     function findAllUnion()
     {
-        let upazila = $('#upazila').val();
+        let upazila = $('#upazila_id').val();
         if(upazila != '')
         {
             $.ajax({
@@ -197,7 +197,7 @@
 
     function getWard()
     {
-        let union = $('#union').val();
+        let union = $('#union_id').val();
         if(union != '')
         {
             $.ajax({
@@ -222,6 +222,11 @@
                 }
             })
         }
+    }
+
+    function get_data()
+    {
+        getWard();
     }
 </script>
 

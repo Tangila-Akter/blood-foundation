@@ -21,6 +21,7 @@ class CreateVillagesTable extends Migration
             $table->foreignId('union_id')->constrained('unions')->onDelete('cascade');
             $table->foreignId('ward_id')->nullable()->constrained('wards')->onDelete('set null');
             $table->string('title')->comment('it should be village, place, colony');
+            $table->string('title_bn')->nullable();
             $table->string('code')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
@@ -34,6 +35,7 @@ class CreateVillagesTable extends Migration
      */
     public function down()
     {
+        // Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('villages');
     }
 }

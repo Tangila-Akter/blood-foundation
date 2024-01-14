@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Union;
 use App\Models\Village;
 use App\Models\District;
+use App\Models\Division;
 use App\Models\Upazilla;
 use App\Models\Ward;
 use App\Rules\UniqueTitle;
@@ -13,156 +14,125 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use App\Interfaces\VillageInterface;
+use App\Traits\ViewDirective;
 
-class VillageRepository
+class VillageRepository implements VillageInterface
 {
-    
-    public static function get($request = null)
+
+    protected $path;
+    use ViewDirective;
+    public function __construct()
     {
-        $villages = Village::orderBy('ward_id', 'ASC');
-
-        if($request != null){
-            if($request->has('division_id')){
-                $villages->where('division_id', $request->division_id);
-            }
-            if($request->has('district_id')){
-                $villages->where('district_id', $request->district_id);
-            }
-            if($request->has('upazilla_id')){
-                $villages->where('upazilla_id', $request->upazilla_id);
-            }
-            if($request->has('union_id')){
-                $villages->where('union_id', $request->union_id);
-            }
-        }
-
-       return $villages->get()->groupBy('ward_id');
+        $this->path ='admin.villages';
+    }
+    public function index()
+    {
+        $param = [];
+        $param['division'] = Division::all();
+        return $this->view($this->path,'index',$param);
     }
 
-    public static function create($request)
+    public function create()
     {
-        $validator = Validator::make($request->all(),[
-            "union_id" => "required",
-            "ward_no" => "required",
-            "title.*" => ['required', new UniqueTitle('Village', 'union_id', $request->union_id)],
-        ]);
+        $param = [];
+        $param['division'] = Division::all();
+        return $this->view($this->path,'create',$param);
+    }
 
+    public function store($request)
+    {
+        if(count($request->title) > 0)
+        {
+            for ($i=0; $i < count($request->title) ; $i++)
+            {
+                $data = array(
+                    'division_id' => $request->division,
+                    'district_id' => $request->district,
+                    'upazilla_id' => $request->upazila,
+                    'union_id' => $request->union,
+                    'ward_id' => $request->ward,
+                    'title' => $request->title[$i],
+                    'title_bn' => $request->title_bn[$i],
+                    'code' => $request->code[$i],
+                );
 
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }else{
-            DB::beginTransaction();
-            if(is_array($request->title)){
-
-                try{
-                    $union = Union::where('id', $request->union_id)->first();
-
-                    $ward = Ward::where('title',$request->ward_no)->first();
-
-                    if($ward == null){
-                        $ward = new Ward();
-                    }
-
-                    $ward->title = $request->ward_no;
-                    $ward->union_id = $request->union_id;
-                    $ward->upazilla_id = $union->upazilla_id;
-                    $ward->district_id = $union->district_id;
-                    $ward->division_id = $union->division_id;
-                    $ward->save();
-
-                    if($union != null){
-                        foreach($request->title as $title){
-                            Village::create([
-                                'title' => $title,
-                                'ward_id' => $ward->id,
-                                'union_id' => $request->union_id,
-                                'upazilla_id' => $union->upazilla_id,
-                                'district_id' => $union->district_id,
-                                'division_id' => $union->division_id,
-                            ]);
-                        }
-                    }
-                    
-
-                    DB::commit();
-                    return response()->json(['success' => 'Village created successfully done!']);
-                }catch(Exception $exception){
-                    Log::error($exception->getMessage());
-                    DB::rollBack();
-                    return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
-                }
-                
+                Village::create($data);
             }
 
-         
+            return response()->json(['success' => 'Village Created Successfully']);
+        }
+        else
+        {
+            return response()->json(['error' => 'Village Not Created!']);
         }
     }
 
-    public static function update($request, $id)
+    public function edit($id){
+
+    }
+
+    public function update($request,$id)
     {
-        $validator = Validator::make($request->all(),[
-            "title" => "required",
-        ]);
+        $data = array(
+            'title' => $request->title,
+            'title_bn' => $request->title_bn,
+            'code' => $request->code,
+        );
 
-        $input = $request->except('_token');
+        $insert = Village::find($id)->update($data);
+        if($insert)
+        {
+            return response()->json(['success' => 'Village Updated Successfully']);
+        }
+        else
+        {
+            return response()->json(['error' => 'Village Updated Unsuccessfully']);
+        }
 
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }else{
+    }
 
-            if(Village::find($id)->update($input)){
-                return response()->json(['success' => 'Village updated successfully done!']);
-
-            }else{
-                return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
-            }
+    public function destroy($id)
+    {
+        try {
+            Village::find($id)->delete();
+            return response()->json(['success' => 'Village Deleted Successfully']);
+        } catch (\Throwable $th)
+        {
+            return response()->json(['error' => 'Village Deleted Unsuccessfully']);
         }
     }
 
+    public function restore(){
 
-    public static function delete($id)
-    {
-        if(Village::find($id)->delete()){
-            return response()->json(['success' => 'Village deleted successfully done!']);
-
-        }else{
-            return response()->json(['error' => 'Data Does not deleted.someting went to wrong. please try again!']);
-        }
     }
 
+    public function delete(){
 
-    public static function bluk_update($request)
-    {
-        $input = $request->only(['status']);
-
-        if($request->has('status') && $request->status == 1){
-            $input['status'] = 1;
-        }
-   
-        if($request->has('ids')){
-            $ids = $request->ids;
-            foreach($ids as $id){
-                Village::find($id)->update($input);
-            }
-
-            return response()->json(['success' => 'Village bulk changed successfully done!']);
-
-        }
-
-        return response()->json(['error' => 'Someting went to wrong. please try again!']);
     }
 
+    public function print(){
 
-    public static function bluk_delete($request)
+    }
+
+    public function get_villages($ward)
     {
-        $ids = $request->ids;
-        foreach($ids as $id){
-            if($id != null){
-                Village::find($id)->delete();
-            }else{
-                return response()->json(['error' => 'Someting went to wrong. please try again!']);
-            }
-        }
-        return response()->json(['success' => 'Village deleted successfully done!']);
+        $village = Ward::getVillages($ward);
+        $ward_info = Ward::find($ward);
+        return view($this->path.'.data',compact('village','ward_info'));
+    }
+
+    public function all_village($ward)
+    {
+        $village = Ward::getVillages($ward);
+        $ward_info = Ward::find($ward);
+        return view($this->path.'.village_by_ward',compact('village','ward_info'));
+    }
+
+    public function load_villages($ward)
+    {
+        $village = Ward::getVillages($ward);
+        $ward_info = Ward::find($ward);
+        return view($this->path.'.data',compact('village','ward_info'));
     }
 }

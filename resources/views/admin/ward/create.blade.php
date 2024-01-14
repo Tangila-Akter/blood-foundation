@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-12 mt-4" id="">
                             <select class="form-select form-select-sm js-select" name="division" id="division" onchange="return findDistrict()">
-                                <option value="">-- Select Division --</option>
+                                <option value="">-- Select Division ---</option>
                                @if(isset($param['division']))
                                @foreach ($param['division'] as $d)
                                 <option value="{{ $d->id }}">{{ $d->title }}</option>
@@ -43,10 +43,10 @@
                             </select> --}}
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 mt-4" id="">
-                            <textarea name="ward_en" id="ward_en" cols="" rows="" class="form-control d-none" onchange="wardInput()">1,2,3,4,5,6,7,8</textarea>
+                            <textarea name="ward_en" id="ward_en" cols="" rows="" class="form-control d-none" onchange="wardInput()">1,2,3,4,5,6,7,8,9</textarea>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 mt-4" id="">
-                            <textarea name="ward_bn" id="ward_bn" cols="" rows="" class="form-control d-none" onchange="wardBnInput()">১,২,৩,৪,৫,৬,৭,৮</textarea>
+                            <textarea name="ward_bn" id="ward_bn" cols="" rows="" class="form-control d-none" onchange="wardBnInput()">১,২,৩,৪,৫,৬,৭,৮,৯</textarea>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-12 mt-4 d-none" id="wardEnBox">
@@ -75,7 +75,6 @@
 <script>
     function findDistrict()
     {
-
         let division = $('#division').val();
         if(division != '')
         {
@@ -187,12 +186,34 @@
         }
     }
 
+
+    function convertToBN(number)
+    {
+
+    }
+
     function wardInput()
     {
+
+        var finalEnlishToBanglaNumber={'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'};
+
+        String.prototype.getDigitBanglaFromEnglish = function() {
+            var retStr = this;
+            for (var x in finalEnlishToBanglaNumber) {
+                retStr = retStr.replace(new RegExp(x, 'g'), finalEnlishToBanglaNumber[x]);
+            }
+            return retStr;
+        };
+
         $('#wardEnBox').html('');
         let ward_en = $('#ward_en').val();
+        let ward_bn = ward_en.getDigitBanglaFromEnglish();
+
         let wardArray = ward_en.split(',');
-        // console.log(wardArray);
+
+        $('#ward_bn').val(ward_bn);
+        wardBnInput();
+
         for (let index = 0; index < wardArray.length; index++)
         {
             $('#wardEnBox').append('<input type="text" name="title[]" class="form-control form-control-sm mt-3" value="'+wardArray[index]+'" readonly>');

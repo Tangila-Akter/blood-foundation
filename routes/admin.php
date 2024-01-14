@@ -67,6 +67,14 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('village-all-translation/{id}', [VillageController::class, 'all_translation'])->name('villages.all_translation');
         Route::post('village-save-all-translation/{id}', [VillageController::class, 'save_all_translation'])->name('villages.save_all_translation');
 
+        Route::get('find_ward',[VillageController::class,'find_ward'])->name('villages.find_ward');
+        Route::get('find_all_ward',[VillageController::class,'find_all_ward'])->name('villages.find_all_ward');
+        Route::get('get_villages',[VillageController::class,'get_villages'])->name('villages.get_villages');
+        Route::get('all_village',[VillageController::class,'all_village'])->name('villages.all_village');
+        Route::get('all_village',[VillageController::class,'all_village'])->name('villages.all_village');
+        Route::get('load_villages',[VillageController::class,'load_villages'])->name('villages.load_villages');
+        Route::get('load_villages',[VillageController::class,'load_villages'])->name('villages.load_villages');
+
         // ============= languages ===================
         Route::resource('languages', LanguageController::class)->names('languages');
         Route::get('languages-delete/{id}', [LanguageController::class, 'delete'])->name('languages.delete');
@@ -85,6 +93,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('operator-assign-location/{id}', [AdminController::class, 'assign_location'])->name('operators.assign_location');
         Route::post('operator-assign/{id}', [AdminController::class, 'assign'])->name('operators.assign');
 
+        //ward
+
         Route::resource('ward',WardController::class)->names('ward');
 
         Route::get('find_district',[WardController::class,'find_district'])->name('ward.find_district');
@@ -95,6 +105,15 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('find_all_union',[WardController::class,'find_all_union'])->name('ward.find_all_union');
 
         Route::get('get_ward',[WardController::class,'get_ward'])->name('ward.get_data');
+
+        Route::get('get_ward_by_union',[WardController::class,'get_ward_by_union'])->name('ward.by_union');
+        Route::get('getward_union',[WardController::class,'get_ward'])->name('ward.getunion_ward');
+
+        Route::get('create_ward/{union_id}',[WardController::class,'create_ward'])->name('ward.create_new_ward');
+
+        Route::post('save_ward',[WardController::class,'save_ward'])->name('ward.save_new_ward');
+
+        Route::get('delete_confirm/{id}',[WardController::class,'delete_confirm'])->name('ward.delete_confirm');
 
     });
 });

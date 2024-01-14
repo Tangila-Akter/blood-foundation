@@ -81,13 +81,23 @@ class CarouselController extends Controller
     public function update(Request $request, $id)
     {
         $data = Carousel::find($id);
-        // if (!empty($_FILES['image']['name'])) {
-        //     $banner_image = 'image_' . time() . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-        //     Storage::disk('public')->delete($banner->image);
-        //     $filename = Storage::disk('public')->putFileAs('banner', $request->file('image'), $banner_image);
-        // } else {
-        //     $filename = $data->image;
-        // }
+        $file = $request->file('image');
+        if($file)
+        {
+            $path = public_path().'/carousel/'.$data->image;
+            if(file_exists($path))
+            {
+                unlink($path);
+            }
+        }
+
+        if($file)
+        {
+            $imagename=time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path().'/carousel/',$imagename);
+            $data->image = $imagename;
+        }
+
         $data->title = $request->title;
         $data->update();
         return redirect()->route('admin.carousel.index');

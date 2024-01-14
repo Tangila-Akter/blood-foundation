@@ -29,7 +29,8 @@
     <link rel="icon" type="image/png" sizes="192x192" href="{{ get_system_favicon() }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ get_system_favicon() }}">
     <!-- END Icons -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 
     @stack('css')
 
@@ -137,6 +138,10 @@
 
     <script src="{{ asset('admin/assets') }}/js/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="{{ asset('admin/assets') }}/js/bootstrap-notify.min.js"></script>
+    <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script  src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script  src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script src="{{ asset('admin/assets/js/database.js') }}"></script>
 
     @stack('js')
     @stack('scripts')

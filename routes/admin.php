@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UpazillaController;
 use App\Http\Controllers\Admin\VillageController;
 use App\Http\Controllers\Admin\DeveloperController;
 use App\Http\Controllers\Admin\WardController;
+use App\Http\Controllers\Admin\CarouselController;
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login');
@@ -106,6 +107,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
         Route::get('get_ward',[WardController::class,'get_ward'])->name('ward.get_data');
 
+
         Route::get('get_ward_by_union',[WardController::class,'get_ward_by_union'])->name('ward.by_union');
         Route::get('getward_union',[WardController::class,'get_ward'])->name('ward.getunion_ward');
 
@@ -114,6 +116,14 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::post('save_ward',[WardController::class,'save_ward'])->name('ward.save_new_ward');
 
         Route::get('delete_confirm/{id}',[WardController::class,'delete_confirm'])->name('ward.delete_confirm');
+
+        //============ Carousel =============
+        Route::get('carousel',[CarouselController::class,'index'])->name('carousel.index');
+        Route::post('carousel_upload', [CarouselController::class, 'store'])->name('carousel.store');
+        Route::get("/edit/{id}", [CarouselController::class, "edit"])->name('carousel.edit');
+        Route::post("/update/{id}", [CarouselController::class, "update"])->name('carousel.update');
+        Route::get("/delete/{id}", [CarouselController::class, "destroy"])->name('carousel.delete');
+
 
     });
 });

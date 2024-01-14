@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Developer;
+use App\Models\Carousel;
 
 class UserAuthController extends Controller
 {
@@ -73,7 +74,8 @@ class UserAuthController extends Controller
     // }
     public function home(){
         $developers=Developer::all();
-        return view('frontend.pages.profile',['developers'=>$developers]);
+        $carousel = Carousel::all();
+        return view('frontend.pages.home',compact("developers","carousel" ));
     }
     public function login(){
         return view('frontend.pages.login');

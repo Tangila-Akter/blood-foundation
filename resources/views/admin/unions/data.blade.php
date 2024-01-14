@@ -6,7 +6,7 @@
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="block block-rounded">
                 <div class="block-header">
-                    <a href="{{ route('admin.villages.index', ['union_id' => $data->id]) }}" class="flex-grow-1 text-muted fs-md fw-bold">
+                    <a href="{{ route('admin.ward.by_union', ['union_id' => $data->id]) }}" class="flex-grow-1 text-muted fs-md fw-bold">
                         {{ $data->title }}
                     </a>
                     <div class="block-options">
@@ -30,7 +30,7 @@
                                 <a class="dropdown-item show-modal" data-url="{{ route('admin.unions.edit',$data->id) }}">
                                     <i class="fa fa-fw fa-pencil-alt me-1"></i> Edit
                                 </a>
-                                
+
 
                                 <a class="dropdown-item text-danger show-modal" data-url="{{ route('admin.unions.delete', $data->id) }}">
                                     <i class="fa fa-fw fa-times me-1"></i> Delete

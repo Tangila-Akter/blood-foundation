@@ -21,6 +21,11 @@
                             <input type="text" class="form-control" name="title"
                                 value="{{ $village->title }}">
                         </div>
+                        <div class="col-12 col-md-6  mb-3">
+                            <label class="form-label">Title In Bangla</label>
+                            <input type="text" class="form-control" name="title_bn"
+                                value="{{ $village->title_bn }}">
+                        </div>
 
                         <div class="col-12 col-md-6  mb-3">
                             <label class="form-label">Code</label>

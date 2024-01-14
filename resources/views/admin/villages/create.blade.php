@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="block block-rounded block-themed block-transparent mb-0">
             <div class="block-header bg-gd-default">
-                <h3 class="block-title">Create New Village</h3>
+                <h3 class="block-title">Create New Villages</h3>
                 <div class="block-options">
                     <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa fa-fw fa-times"></i>
@@ -13,38 +13,54 @@
                 <!-- Form Grid with Labels -->
                 <form method="POST" class="submit-form" action="{{ route('admin.villages.store') }}">
                     @csrf
-                    <div class="col-12  mb-3">
-                        <label class="form-label">Ward No</label>
-                        <input type="number" class="form-control" name="ward_no"
-                            value="{{ old('ward_no') }}" />
-                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-12 mt-4" id="">
+                            <select class="form-select form-select-sm js-select" name="division" id="division" onchange="return findDistrict()">
+                                <option value="">-- Select Division ---</option>
+                               @if(isset($param['division']))
+                               @foreach ($param['division'] as $d)
+                                <option value="{{ $d->id }}">{{ $d->title }}</option>
+                               @endforeach
+                               @endif
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 mt-4" id="districtBox">
+                            {{-- <select class="form-select form-select-sm js-select" name="district" id="district">
+                                <option value="">-- Select District --</option>
 
-                    <textarea  placeholder="input text with comma separated for multiple field" class="inputTextArea form-control mb-3"></textarea>
+                            </select> --}}
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 mt-4" id="upazilaBox">
+                            {{-- <select class="form-select form-select-sm js-select" name="upazila" id="upazila">
+                                <option value="">-- Select Upazila --</option>
 
+                            </select> --}}
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 mt-4" id="unionBox">
+                            {{-- <select class="form-select form-select-sm js-select" name="union" id="union">
+                                <option value="">-- Select Union --</option>
 
-                    <div id="outputFields">
+                            </select> --}}
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-12 mt-4" id="wardBox">
 
-                    </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-12 mt-4" id="">
+                            <textarea name="village_names" id="village_names" cols="" rows="" class="form-control d-none" onchange="villageInput()" placeholder="Give Vilages Name. If You Want to create multiple village then give , after every village name."></textarea>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12 mt-4 d-none" id="villageEn">
 
-                    <input type="hidden" name="union_id" value="{{ request()->get('union_id') }}" />
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12 mt-4 d-none" id="villageBn">
 
-                    {{-- <div class="row">
-                        <div class="col-12 col-md-6  mb-3">
-                            <label class="form-label">Title</label>
-                            <input type="text" class="form-control" name="title"
-                                value="{{ old('title') }}">
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12 mt-4 d-none" id="villageCode">
+
                         </div>
 
-                        <div class="col-12 col-md-6  mb-3">
-                            <label class="form-label">Code</label>
-                            <input type="text" class="form-control" name="code"
-                                value="{{ old('code') }}">
-                        </div>
-                    </div> --}}
-
-
-                    <button type="submit" class="btn btn-sm btn-outline-primary mb-3">
-                        Save Village
+                    </div>
+                    <button type="submit" class="submit d-none btn btn-sm btn-outline-primary mb-3 mt-2">
+                        Save Villages
                     </button>
 
                 </form>
@@ -56,3 +72,164 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function findDistrict()
+    {
+        let division = $('#division').val();
+        if(division != '')
+        {
+            $.ajax({
+                headers : {
+                    'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+                },
+
+                url : '{{ route('admin.ward.find_district') }}',
+
+                type : 'GET',
+
+                data : {division},
+
+                beforeSend : () => {
+                    $('#districtBox').html('Loading..');
+                },
+
+                success : (res) => {
+                    $('#districtBox').html(res);
+                }
+            });
+        }
+        else
+        {
+            $('#districtBox').html('');
+        }
+    }
+    //
+
+    function findUpazila()
+    {
+        let district = $('#district').val();
+        if(district != '')
+        {
+            $.ajax({
+                headers : {
+                    'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+                },
+
+                url : '{{ route('admin.ward.find_upazila') }}',
+
+                type : 'GET',
+
+                data : {district},
+
+                beforeSend : function(){
+                    $('#upazilaBox').html('Loading...');
+                },
+
+                success : function(res)
+                {
+                    $('#upazilaBox').html(res);
+                }
+            });
+        }
+        else
+        {
+            $('#upazilaBox').html('');
+        }
+    }
+
+    function findUnion()
+    {
+        let upazila = $('#upazila').val();
+        if(upazila != '')
+        {
+            $.ajax({
+                headers:{
+                    'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+                },
+                url : '{{ route('admin.ward.find_all_union') }}',
+                type : 'GET',
+                data : {upazila},
+                beforeSend: function()
+                {
+                    $('#unionBox').html('Loading...');
+                },
+                success : function(res)
+                {
+                    $('#unionBox').html(res);
+                }
+            });
+        }
+        else
+        {
+            $('#unionBox').html('');
+        }
+    }
+
+    function getWard()
+    {
+        let union = $('#union_id').val();
+        // alert(union);
+        if(union != '')
+        {
+            $.ajax({
+                headers : {
+                    'X-CSRF-TOKEN' : '{{ csrf_token() }}'
+                },
+
+                url : '{{ route('admin.villages.find_ward') }}',
+
+                type : 'GET',
+
+                data : {union},
+
+                beforeSend : () => {
+                    $('#wardBox').html('Loading..');
+                },
+
+                success : (res) => {
+                    $('#wardBox').html(res);
+                }
+            });
+        }
+        else
+        {
+            $('#wardBox').html('');
+        }
+    }
+
+    function getSubmit()
+    {
+        let ward = $('#ward').val();
+        if(ward != '')
+        {
+            $('.submit').removeClass('d-none');
+            $('#village_names').removeClass('d-none');
+        }
+    }
+
+    function villageInput()
+    {
+        $('#villageEn').html('');
+        $('#villageBn').html('');
+        $('#villageCode').html('');
+        let village_input = $('#village_names').val();
+        // alert(village_input);
+        if(village_input != '')
+        {
+            $('#villageEn').removeClass('d-none');
+            $('#villageBn').removeClass('d-none');
+            $('#villageCode').removeClass('d-none');
+            let villageArray = village_input.split(',');
+            for (let index = 0; index < villageArray.length; index++)
+            {
+                $('#villageEn').append('<input type="text" name="title[]" class="form-control form-control-sm mt-3" value="'+villageArray[index]+'" required>');
+                $('#villageBn').append('<input type="text" name="title_bn[]" class="form-control form-control-sm mt-3" value="" placeholder="Give Name In Bangla Here">');
+                $('#villageCode').append('<input type="text" name="code[]" class="form-control form-control-sm mt-3" value="" placeholder="Give Code Here">');
+
+            }
+        }
+    }
+</script>
+

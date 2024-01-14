@@ -17,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Interfaces\WardInterface',
             'App\Repository\WardRepository',
         );
+        $this->app->bind(
+            'App\Interfaces\VillageInterface',
+            'App\Repository\VillageRepository',
+        );
     }
 
     /**

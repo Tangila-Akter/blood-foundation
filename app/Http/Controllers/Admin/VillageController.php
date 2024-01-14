@@ -9,9 +9,20 @@ use App\Models\VillageTranslation;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Repository\VillageRepository;
+use App\Traits\ViewDirective;
+use App\Interfaces\VillageInterface;
+use App\Models\Union;
 
 class VillageController extends Controller
 {
+    protected $path;
+    protected $interface;
+    use ViewDirective;
+    public function __construct(VillageInterface $interface)
+    {
+        $this->path = 'admin.villages';
+        $this->interface = $interface;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +30,7 @@ class VillageController extends Controller
      */
     public function index()
     {
-        return view('admin.villages.index');
+        return $this->interface->index();
     }
 
     /**
@@ -29,7 +40,7 @@ class VillageController extends Controller
      */
     public function create()
     {
-        return view('admin.villages.create');
+        return $this->interface->create();
     }
 
     /**
@@ -40,7 +51,7 @@ class VillageController extends Controller
      */
     public function store(Request $request)
     {
-        return VillageRepository::create($request);
+        return $this->interface->store($request);
     }
 
     /**
@@ -75,7 +86,7 @@ class VillageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return VillageRepository::update($request, $id);
+        return $this->interface->update($request, $id);
     }
 
     /**
@@ -86,7 +97,7 @@ class VillageController extends Controller
      */
     public function destroy($id)
     {
-        return VillageRepository::delete($id);
+        return $this->interface->destroy($id);
     }
 
     /**
@@ -109,7 +120,7 @@ class VillageController extends Controller
             $datas = VillageRepository::get($request);
         }
 
-        
+
         return view('admin.villages.data', compact('datas'));
     }
 
@@ -124,17 +135,17 @@ class VillageController extends Controller
         }else{
             return response()->json(['error' => 'You Have No Language Active.Someting went to wrong. please try again!']);
         }
-       
+
     }
 
     public function save_translation(Request $request, $id, $lang_id)
     {
-        
+
         $input = $request->except('_token');
 
         $input['village_id'] = $id;
         $input['language_id'] = $lang_id;
-        
+
 
         if(VillageTranslation::updateOrCreate(['language_id' => $lang_id, 'village_id' => $id], $input)){
             return response()->json(['success' => 'Village Transalation updated successfully done!']);
@@ -142,7 +153,7 @@ class VillageController extends Controller
         }else{
             return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
         }
-        
+
     }
 
 
@@ -167,26 +178,90 @@ class VillageController extends Controller
 
 
         return view('admin.villages.all-translation',compact('villages','language'));
-        
+
     }
 
 
     public function save_all_translation(Request $request, $id)
     {
-       
+
         $language_id = $id;
         $total_request = count($request->id);
 
         DB::beginTransaction();
-        for ($i=0; $i < $total_request; $i++) { 
+        for ($i=0; $i < $total_request; $i++) {
             $input['language_id'] = $language_id;
             $input['village_id'] = $request->id[$i];
             $input['title'] = $request->title[$i];
-    
+
             VillageTranslation::updateOrCreate(['language_id' => $language_id, 'village_id' => $input['village_id']], $input);
         }
         DB::commit();
 
         return response()->json(['success' => 'All Village Transalation updated successfully done!']);
+    }
+
+    public function find_ward(Request $request)
+    {
+        // return $request->union;s
+        $data = Union::getThisWard($request->union);
+
+        if(count($data) > 0)
+        {
+            $output = '<select class="form-select form-select-sm" id="ward" name="ward" onchange="getSubmit()">
+            <option value="">-- Select One --</option>';
+            foreach($data as $v)
+            {
+                $check = Village::where('ward_id',$v->id)->count();
+                if($check == 0)
+                {
+                    $output.='<option value="'.$v->id.'">'.$v->title.' No Ward</option>';
+                }
+            }
+            $output.='</select>';
+
+            return $output;
+        }
+        else
+        {
+            return '<b class="text-danger">No Ward Found!</b>';
+        }
+    }
+    public function find_all_ward(Request $request)
+    {
+        // return $request->union;s
+        $data = Union::getThisWard($request->union);
+
+        if(count($data) > 0)
+        {
+            $output = '<select class="form-select form-select-sm" id="ward" name="ward" onchange="getAllVillages()">
+            <option value="">-- Select One --</option>';
+            foreach($data as $v)
+            {
+                $output.='<option value="'.$v->id.'">'.$v->title.' No Ward</option>';
+            }
+            $output.='</select>';
+
+            return $output;
+        }
+        else
+        {
+            return '<b class="text-danger">No Ward Found!</b>';
+        }
+    }
+
+    public function get_villages(Request $request)
+    {
+        return $this->interface->get_villages($request->ward);
+    }
+
+    public function all_village(Request $request)
+    {
+        return $this->interface->all_village($request->ward_id);
+    }
+
+    public function load_villages(Request $request)
+    {
+        return $this->interface->load_villages($request->ward);
     }
 }

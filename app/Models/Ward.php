@@ -53,6 +53,12 @@ class Ward extends Model
         return $this->belongsTo(Union::class, 'union_id', 'id');
     }
 
+    public static function getVillages($ward)
+    {
+        $data = Village::where('ward_id',$ward)->get();
+        return $data;
+    }
+
     protected static function boot()
     {
         parent::boot();

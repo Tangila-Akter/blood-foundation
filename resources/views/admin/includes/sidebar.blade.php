@@ -95,6 +95,12 @@
                         <span class="nav-main-link-name">{{ trans('Ward') }}</span>
                     </a>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link " href="{{ route('admin.villages.index') }}">
+                        <i class="nav-main-link-icon fa fa-border-all"></i>
+                        <span class="nav-main-link-name">{{ trans('Villages') }}</span>
+                    </a>
+                </li>
 
 
 

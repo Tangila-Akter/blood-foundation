@@ -82,7 +82,7 @@ class WardController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->interface->edit($id);
     }
 
     /**
@@ -94,7 +94,7 @@ class WardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->interface->update($request,$id);
     }
 
     /**
@@ -105,7 +105,7 @@ class WardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->interface->destroy($id);
     }
 
     /**
@@ -153,5 +153,24 @@ class WardController extends Controller
       public function find_all_union(Request $request)
       {
         return $this->interface->find_all_union($request->upazila);
+      }
+
+      public function get_ward_by_union(Request $request)
+      {
+        return $this->interface->by_union($request->union_id);
+      }
+
+      public function create_ward($union_id)
+      {
+        return $this->interface->create_ward($union_id);
+      }
+
+      public function save_ward(Request $request)
+      {
+        return $this->interface->save_ward($request);
+      }
+      public function delete_confirm($id)
+      {
+        return view($this->path.'.delete_confirm',compact('id'));
       }
 }

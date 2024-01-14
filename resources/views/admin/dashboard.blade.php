@@ -18,6 +18,51 @@
      <!-- Quick Overview -->
      <div class="row row-deck">
         <div class="col-6 col-lg-3">
+            <a class="block block-rounded block-link-shadow text-center" href="{{ route('admin.divisions.index') }}">
+                <div class="block-content py-5">
+                    <div class="font-size-h3 font-w600 text-primary mb-1"></div>
+                    <h3>{{$total['division']}}</h3>
+                    <p class="font-w600 font-size-sm text-muted text-uppercase mb-0">
+                        @lang('common.division')
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-lg-3">
+            <a class="block block-rounded block-link-shadow text-center" href="{{ route('admin.districts.index') }}">
+                <div class="block-content py-5">
+                    <div class="font-size-h3 font-w600 text-primary mb-1"></div>
+                    <h3>{{$total['district']}}</h3>
+                    <p class="font-w600 font-size-sm text-muted text-uppercase mb-0">
+                        @lang('common.district')
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-lg-3">
+            <a class="block block-rounded block-link-shadow text-center" href="">
+                <div class="block-content py-5">
+                    <div class="font-size-h3 font-w600 text-primary mb-1"></div>
+                    <h3>{{$total['upazila']}}</h3>
+                    <p class="font-w600 font-size-sm text-muted text-uppercase mb-0">
+                        @lang('common.upazila')
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-6 col-lg-3">
+            <a class="block block-rounded block-link-shadow text-center" href="">
+                <div class="block-content py-5">
+                    <div class="font-size-h3 font-w600 text-primary mb-1"></div>
+                    <h3>{{$total['union']}}</h3>
+                    <p class="font-w600 font-size-sm text-muted text-uppercase mb-0">
+                        @lang('common.union')
+                    </p>
+                </div>
+            </a>
+        </div>
+        <div class="col-6 col-lg-3">
             <a class="block block-rounded block-link-shadow text-center" href="">
                 <div class="block-content py-5">
                     <div class="font-size-h3 font-w600 text-primary mb-1"></div>

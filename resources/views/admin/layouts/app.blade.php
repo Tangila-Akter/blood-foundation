@@ -43,6 +43,16 @@
     <link rel="stylesheet" id="css-main" href="{{ asset('admin/assets') }}/css/admin.min.css">
     {{-- <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}"> --}}
 
+    @if($lang == 'bn')
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Noto Sans Bengali', sans-serif;
+        }
+    </style>
+
+    @endif
+
     <style>
         .alert{
             z-index: 1052 !important;
@@ -138,7 +148,7 @@
 
     <script src="{{ asset('admin/assets') }}/js/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="{{ asset('admin/assets') }}/js/bootstrap-notify.min.js"></script>
-    <script  src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
 <script  src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script  src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 <script src="{{ asset('admin/assets/js/database.js') }}"></script>

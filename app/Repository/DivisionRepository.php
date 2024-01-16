@@ -5,10 +5,11 @@ namespace App\Repository;
 use App\Models\Division;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Request\DivisionRequest;
 
 class DivisionRepository
 {
-    
+
     public static function get()
     {
         $data = Division::latest();
@@ -16,31 +17,20 @@ class DivisionRepository
         if(auth('admin')->check()){
             $data->accessible();
         }
-        
+
        return $data->get();
     }
 
     public static function create($request)
     {
-        $validator = Validator::make($request->all(),[
-            "title" => "required|unique:divisions,title",
-        ]);
-
         $input = $request->except('_token');
+        if(Division::create($input)){
+            return response()->json(['success' => __('division.create_message')]);
 
-        
-
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()->all()]);
         }else{
-
-            if(Division::create($input)){
-                return response()->json(['success' => 'Division created successfully done!']);
-
-            }else{
-                return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
-            }
+            return response()->json(['error' => __('division.error_message')]);
         }
+
     }
 
     public static function update($request, $id)
@@ -56,7 +46,7 @@ class DivisionRepository
         }else{
 
             if(Division::find($id)->update($input)){
-                return response()->json(['success' => 'Division updated successfully done!']);
+                return response()->json(['success' => __('division.update_message')]);
 
             }else{
                 return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
@@ -83,7 +73,7 @@ class DivisionRepository
         if($request->has('status') && $request->status == 1){
             $input['status'] = 1;
         }
-   
+
         if($request->has('ids')){
             $ids = $request->ids;
             foreach($ids as $id){

@@ -1,22 +1,22 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    District
+    @lang('district.index_title')
 @endsection
 
 @section('breadcrumb')
-    <h1 class="flex-grow-1 fs-3 fw-bold my-2 my-sm-3">District</h1>
+    <h1 class="flex-grow-1 fs-3 fw-bold my-2 my-sm-3">@lang('district.index_title')</h1>
     <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Admin</li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item">@lang('common.admin')</li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard')}}">@lang('common.dashboard')</a></li>
 
             @if (request()->has('division_id'))
-                <li class="breadcrumb-item"><a href="{{ route('admin.divisions.index') }}">Division</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.divisions.index') }}">@lang('division.index_title')</a></li>
                 <li class="breadcrumb-item">{{ get_division_by_id(request()->get('division_id')) }}</li>
             @endif
 
-            <li class="breadcrumb-item active" aria-current="page">District</li>
+            <li class="breadcrumb-item active" aria-current="page">@lang('district.index_title')</li>
         </ol>
     </nav>
 @endsection
@@ -28,27 +28,13 @@
             <!-- Top Products -->
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
-                    <h3 class="block-title">List Of District
-                        @if (request()->has('division_id'))
-                         -- of {{ get_division_by_id(request()->get('division_id')) }}  Division
-                        @endif
+                    <h3 class="block-title">@lang('district.list_of_district')
                     </h3>
                     @if (request()->has('division_id'))
                     <div class="block-options">
-                        <div class="dropdown font-sans-serif d-inline-block">
-                            <button class="btn btn-sm btn-info dropdown-toggle" id="dropdownMenuButton" type="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Translate
-                                All</button><span class="caret"> </span>
-                            <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="dropdownMenuButton">
-                                <div class="px-2 py-3">
-                                    {!! get_translatable_badge('admin.districts.all_translation', null, 'division_id', request()->get('division_id')) !!}
-                                </div>
-                            </div>
-                        </div>
-
                         <button type="button" class="btn btn-sm btn-primary show-modal"
                             data-url="{{ route('admin.districts.create', ['division_id' => request()->get('division_id')]) }}">
-                            Create New
+                            + @lang('common.create_new')
                         </button>
                     </div>
                     @endif
@@ -86,12 +72,17 @@
                 var splitText = inputText.split(',');
 
                 $('#outputFields').empty(); // Clear previous fields
+                $('#outputFieldsBn').empty(); // Clear previous fields
 
                 splitText.forEach(function(item) {
                     $('#outputFields').append(
-                        '<label class="form-label">Title</label><input type="text" name="title[]" class="outputField form-control" value="' +
+                        '<input type="text" name="title[]" class="outputField form-control" value="' +
                         item.trim() +
                         '"/><br>');
+                });
+                splitText.forEach(function(item) {
+                    $('#outputFieldsBn').append(
+                        '<input type="text" name="title_bn[]" class="outputField form-control" value=""/><br>');
                 });
             });
     </script>

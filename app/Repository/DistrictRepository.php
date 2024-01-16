@@ -10,16 +10,17 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Request\DistrictRequest;
+use App\Models\Division;
 
 class DistrictRepository
 {
 
     public static function get($request = null)
     {
-        $districts = District::orderBy('division_id', 'ASC');
+        $districts = Division::with('districts')->orderBy('id', 'ASC');
 
         if($request != null){
-            $districts->where('division_id', $request->division_id);
+            $districts->where('id', $request->division_id);
         }
 
         if(auth('admin')->check()){
@@ -29,36 +30,32 @@ class DistrictRepository
        return $districts->get();
     }
 
-    public static function create(DistrictRequest $request)
+    public static function create($request)
     {
         $input = $request->except('_token');
+        DB::beginTransaction();
+        if(is_array($request->title)){
 
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }else{
-            DB::beginTransaction();
-            if(is_array($request->title)){
-
-                try{
-                    foreach($request->title as $title){
-                        District::create([
-                            'title' => $title,
-                            'division_id' => $request->division_id
-                        ]);
-                    }
-
-                    DB::commit();
-                    return response()->json(['success' => 'District created successfully done!']);
-                }catch(Exception $exception){
-                    Log::info($exception->getMessage());
-                    DB::rollBack();
-                    return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
+            try{
+                for($i=0; $i < count($request->title); $i++)
+                {
+                    District::create([
+                        'title' => $request->title[$i],
+                        'title_bn' => $request->title_bn[$i],
+                        'division_id' => $request->division_id
+                    ]);
                 }
 
+                DB::commit();
+                return response()->json(['success' => __('district.create_message')]);
+            }catch(Exception $exception){
+                Log::info($exception->getMessage());
+                DB::rollBack();
+                return response()->json(['error' => __('district.error_message')]);
             }
 
-
         }
+
     }
 
     public static function update($request, $id)
@@ -74,10 +71,10 @@ class DistrictRepository
         }else{
 
             if(District::find($id)->update($input)){
-                return response()->json(['success' => 'District updated successfully done!']);
+                return response()->json(['success' => __('district.update_message')]);
 
             }else{
-                return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
+                return response()->json(['error' => __('district.update_error')]);
             }
         }
     }
@@ -86,10 +83,10 @@ class DistrictRepository
     public static function delete($id)
     {
         if(District::find($id)->delete()){
-            return response()->json(['success' => 'District deleted successfully done!']);
+            return response()->json(['success' => __('district.delete_message')]);
 
         }else{
-            return response()->json(['error' => 'Data Does not deleted.someting went to wrong. please try again!']);
+            return response()->json(['error' => __('district.delete_error')]);
         }
     }
 

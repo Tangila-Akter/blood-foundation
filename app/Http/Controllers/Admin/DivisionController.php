@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\DivisionTranslation;
 use App\Http\Controllers\Controller;
 use App\Repository\DivisionRepository;
+use App\Http\Requests\DivisionRequest;
 
 class DivisionController extends Controller
 {
@@ -38,7 +39,7 @@ class DivisionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DivisionRequest $request)
     {
         return DivisionRepository::create($request);
     }
@@ -118,17 +119,17 @@ class DivisionController extends Controller
         }else{
             return response()->json(['error' => 'You Have No Language Active.Someting went to wrong. please try again!']);
         }
-       
+
     }
 
     public function save_translation(Request $request, $id, $lang_id)
     {
-        
+
         $input = $request->except('_token');
 
         $input['division_id'] = $id;
         $input['language_id'] = $lang_id;
-        
+
 
         if(DivisionTranslation::updateOrCreate(['language_id' => $lang_id, 'division_id' => $id], $input)){
             return response()->json(['success' => 'Division Transalation updated successfully done!']);
@@ -136,7 +137,7 @@ class DivisionController extends Controller
         }else{
             return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
         }
-        
+
     }
 
 
@@ -156,22 +157,22 @@ class DivisionController extends Controller
 
 
         return view('admin.divisions.all-translation',compact('divisions','language'));
-        
+
     }
 
 
     public function save_all_translation(Request $request, $id)
     {
-       
+
         $language_id = $id;
         $total_request = count($request->id);
 
         DB::beginTransaction();
-        for ($i=0; $i < $total_request; $i++) { 
+        for ($i=0; $i < $total_request; $i++) {
             $input['language_id'] = $language_id;
             $input['division_id'] = $request->id[$i];
             $input['title'] = $request->title[$i];
-    
+
             DivisionTranslation::updateOrCreate(['language_id' => $language_id, 'division_id' => $input['division_id']], $input);
         }
         DB::commit();

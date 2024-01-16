@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UpazillaRepository
 {
-    
+
     public static function get($request = null)
     {
         $upazillas = Upazilla::orderBy('division_id', 'ASC');
@@ -64,10 +64,10 @@ class UpazillaRepository
                     DB::rollBack();
                     return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
                 }
-                
+
             }
 
-         
+
         }
     }
 
@@ -111,7 +111,7 @@ class UpazillaRepository
         if($request->has('status') && $request->status == 1){
             $input['status'] = 1;
         }
-   
+
         if($request->has('ids')){
             $ids = $request->ids;
             foreach($ids as $id){

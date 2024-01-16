@@ -108,7 +108,7 @@ class UpazillaController extends Controller
         if($request->has('division_id') || $request->has('district_id')){
             $datas = UpazillaRepository::get($request);
         }
-        
+
         return view('admin.upazillas.data', compact('datas'));
     }
 
@@ -123,17 +123,17 @@ class UpazillaController extends Controller
         }else{
             return response()->json(['error' => 'You Have No Language Active.Someting went to wrong. please try again!']);
         }
-       
+
     }
 
     public function save_translation(Request $request, $id, $lang_id)
     {
-        
+
         $input = $request->except('_token');
 
         $input['upazilla_id'] = $id;
         $input['language_id'] = $lang_id;
-        
+
 
         if(UpazillaTranslation::updateOrCreate(['language_id' => $lang_id, 'upazilla_id' => $id], $input)){
             return response()->json(['success' => 'Upazilla Transalation updated successfully done!']);
@@ -141,7 +141,7 @@ class UpazillaController extends Controller
         }else{
             return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
         }
-        
+
     }
 
 
@@ -166,22 +166,22 @@ class UpazillaController extends Controller
 
 
         return view('admin.upazillas.all-translation',compact('upazillas','language'));
-        
+
     }
 
 
     public function save_all_translation(Request $request, $id)
     {
-       
+
         $language_id = $id;
         $total_request = count($request->id);
 
         DB::beginTransaction();
-        for ($i=0; $i < $total_request; $i++) { 
+        for ($i=0; $i < $total_request; $i++) {
             $input['language_id'] = $language_id;
             $input['upazilla_id'] = $request->id[$i];
             $input['title'] = $request->title[$i];
-    
+
             UpazillaTranslation::updateOrCreate(['language_id' => $language_id, 'upazilla_id' => $input['upazilla_id']], $input);
         }
         DB::commit();

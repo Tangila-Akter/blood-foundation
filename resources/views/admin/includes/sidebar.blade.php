@@ -65,14 +65,14 @@
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ Route::currentRouteName() == 'admin.divisions.index' ? 'active' : '' }}" href="{{ route('admin.divisions.index') }}">
                         <i class="nav-main-link-icon fa fa-border-all"></i>
-                        <span class="nav-main-link-name">{{ trans('Division') }}</span>
+                        <span class="nav-main-link-name"> @lang('division.index_title')</span>
                     </a>
                 </li>
 
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ Route::currentRouteName() == 'admin.districts.index' ? 'active' : '' }}" href="{{ route('admin.districts.index') }}">
                         <i class="nav-main-link-icon fa fa-border-all"></i>
-                        <span class="nav-main-link-name">{{ trans('District') }}</span>
+                        <span class="nav-main-link-name">@lang('district.index_title')</span>
                     </a>
                 </li>
 

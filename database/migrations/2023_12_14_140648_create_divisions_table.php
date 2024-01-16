@@ -17,6 +17,7 @@ class CreateDivisionsTable extends Migration
             $table->id();
             $table->foreignId('country_id')->constrained('countries')->onDelete('cascade');
             $table->string('title')->unique();
+            $table->string('title_bn')->nullable();
             $table->string('code')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
@@ -30,6 +31,7 @@ class CreateDivisionsTable extends Migration
      */
     public function down()
     {
+        //  Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('divisions');
     }
 }

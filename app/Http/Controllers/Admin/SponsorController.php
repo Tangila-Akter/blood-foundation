@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Carousel;
 use Illuminate\Http\Request;
+use App\Models\Sponsor;
 
-class CarouselController extends Controller
+class SponsorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function carousel_index()
+    public function index()
     {
-        $data = Carousel::all();
-        return view('admin.carousel.index', compact('data'));
+        $data = Sponsor::all();
+        return view('admin.sponsor.index', compact('data'));
     }
 
     /**
@@ -37,12 +37,12 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Carousel;
+        $data = new Sponsor;
         $image=$request->image;
          $imagename=time().'.'.$image->getClientOriginalExtension() ;
-         $request->image->move('carousel',$imagename);
+         $request->image->move('sponsor',$imagename);
          $data->image=$imagename;
-         $data->title = $request->title;
+         $data->link = $request->link;
          $data->save();
 
         return redirect()->back();
@@ -51,10 +51,10 @@ class CarouselController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( $r)
+    public function show($id)
     {
         //
     }
@@ -62,29 +62,29 @@ class CarouselController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Carousel::find($id);
-        return view('admin.carousel.edit', compact('data'));
+        $data = Sponsor::find($id);
+        return view('admin.sponsor.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data = Carousel::find($id);
+        $data = Sponsor::find($id);
         $file = $request->file('image');
         if($file)
         {
-            $path = public_path().'/carousel/'.$data->image;
+            $path = public_path().'/sponsor/'.$data->image;
             if(file_exists($path))
             {
                 unlink($path);
@@ -94,26 +94,26 @@ class CarouselController extends Controller
         if($file)
         {
             $imagename=time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path().'/carousel/',$imagename);
+            $file->move(public_path().'/sponsor/',$imagename);
             $data->image = $imagename;
         }
 
-        $data->title = $request->title;
+        $data->link = $request->link;
         $data->update();
-        return redirect()->route('admin.carousel.index');
+        return redirect()->route('admin.sponsor.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data = Carousel::find($id);
-        if (file_exists('carousel/'.$data->image)) {
-            unlink('carousel/'. $data->image);
+        $data = Sponsor::find($id);
+        if (file_exists('sponsor/'.$data->image)) {
+            unlink('sponsor/'. $data->image);
         }
         $data->delete();
         return redirect()->back();

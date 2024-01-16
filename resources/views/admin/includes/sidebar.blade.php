@@ -138,6 +138,18 @@
                                 <span class="nav-main-link-name">Carousel</span>
                             </a>
                         </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link " href="{{route('admin.marquee.index')}}">
+                                <i class="nav-main-link-icon fa fa-border-all"></i>
+                                <span class="nav-main-link-name">Marquee</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link " href="{{route('admin.sponsor.index')}}">
+                                <i class="nav-main-link-icon fa fa-border-all"></i>
+                                <span class="nav-main-link-name">Sponsor logo</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

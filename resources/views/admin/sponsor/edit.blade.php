@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Sponsor
+Carousel
 @endsection
 
 
@@ -9,10 +9,10 @@ Sponsor
 @section('content')
   {{-- table list starts --}}
   <div class="block-content block-content-full">
-    <form action="{{url('admin.sponsor.update',$data->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.sponsor.update',$data->id)}}" method="post" enctype="multipart/form-data">
       @csrf
       <div>
-          <label>Link:</label>
+          <label>Title:</label>
           <input class="form-control" name="link"  value="{{$data->link}}" >
       </div>
 

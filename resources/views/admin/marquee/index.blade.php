@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Carousel
+Marquee
 @endsection
 
 
@@ -9,7 +9,7 @@ Carousel
 @section('content')
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary mt-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Add Carousel
+    Add Marquee
   </button><br>
   
   <!-- Modal -->
@@ -17,21 +17,18 @@ Carousel
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Carousel</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Marquee</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-    <form action="{{route('admin.carousel.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.marquee.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div>
-            <label>Title:</label>
-            <input class="form-control" name="title"  placeholder="Write a title" >
+            <label>Message:</label>
+            <input class="form-control" name="text"  placeholder="Write a title" >
         </div>
 
-        <div>
-            <label>Image:</label>
-            <input class="form-control" name="image" type="file">
-        </div>
+       
 
         </div>
         <div class="modal-footer">
@@ -50,28 +47,25 @@ Carousel
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Image</th>
+                <th>Message</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $data)
             <tr>
-                <td>{{ $data->title }}</td>
-                <td><img height="100" width="100" src="../carousel/{{ $data->image }}"></td>
+                <td>{{ $data->text }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{{route('admin.carousel.edit',$data->id)}}">Edit</a>
-                    <a class="btn btn-danger" href="{{route('admin.carousel.delete',$data->id)}}">Delete</a>
+                    <a class="btn btn-warning" href="{{route('admin.marquee.edit',$data->id)}}">Edit</a>
+                    <a class="btn btn-danger" href="{{route('admin.marquee.delete',$data->id)}}">Delete</a>
                 </td>
             </tr>
             @endforeach
         </tbody>
         <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Action</th>
+              <th>Message</th>
+              <th>Action</th>
             </tr>
         </tfoot>
     </table>

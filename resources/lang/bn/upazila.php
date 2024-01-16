@@ -2,5 +2,20 @@
 return array(
     'index_title' => 'উপজেলা',
     'list_of_upazila' => 'উপজেলা সমূহের তালিকা',
-    
+    'create_title' => 'নতুন উপজেলা যুক্ত করুন',
+    'save' => 'সেভ উপজেলা',
+    'district_required' => 'জেলা নির্বাচন করুন',
+    'title_required' => 'জেলার টাইটেল প্রদান করুন',
+    'create_message' => 'উপজেলা যুক্ত করা হয়েছে',
+    'error_message' => 'উপজেলা যুক্ত করা হয়নি',
+    'title' => 'টাইটেল',
+    'title_bn' => 'টাইটেল বাংলায়',
+    'code' => 'কোড',
+    'edit_upazila' => 'উপজেলা সম্পাদন করুন',
+    'delete_upazila' => 'উপজেলা ডিলেট করুন',
+    'confirmation' => 'আপনি কি এই উপজেলাটি ডিলেট করতে ইচ্ছুক?',
+    'edit_message' => 'উপজেলা সফলভাবে সম্পাদিত হয়েছে',
+    'delete_message' => 'উপজেলা ডিলেট করা হয়েছে',
+    'edit_error' => 'উপজেলা সম্পাদিত হয়নি',
+    'delete_error' => 'উপজেলা ডিলেট হয়নি',
 );

@@ -34,21 +34,12 @@
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
                     <h3 class="block-title">@lang('upazila.list_of_upazila')
-
-
-                        @if (request()->has('district_id'))
-                         -- of {{ get_district_by_id(request()->get('district_id')) }}  @lang('district.index_title')
-                        @endif
-
-                        @if (request()->has('division_id'))
-                        -- of {{ get_division_by_id(request()->get('division_id')) }}  @lang('division.index_title')
-                       @endif
                     </h3>
                     @if (request()->has('district_id'))
                     <div class="block-options">
                         <button type="button" class="btn btn-sm btn-primary show-modal"
                             data-url="{{ route('admin.upazillas.create', ['district_id' => request()->get('district_id')]) }}">
-                            Create New
+                           + @lang('common.create_new')
                         </button>
                     </div>
                     @endif
@@ -86,12 +77,16 @@
                 var splitText = inputText.split(',');
 
                 $('#outputFields').empty(); // Clear previous fields
+                $('#outputFieldsBn').empty(); // Clear previous fields
 
                 splitText.forEach(function(item) {
                     $('#outputFields').append(
-                        '<label class="form-label">Title</label><input type="text" name="title[]" class="outputField form-control" value="' +
+                        '<input type="text" name="title[]" class="outputField form-control" value="' +
                         item.trim() +
                         '"/><br>');
+                    $('#outputFieldsBn').append(
+                        '<input type="text" name="title_bn[]" class="form-control" value="' +
+                        '" placeholder="Title In Bengali"/><br>');
                 });
             });
     </script>

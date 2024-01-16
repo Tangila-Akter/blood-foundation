@@ -11,7 +11,7 @@ Marquee
 <button type="button" class="btn btn-primary mt-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add Marquee
   </button><br>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -28,7 +28,7 @@ Marquee
             <input class="form-control" name="text"  placeholder="Write a title" >
         </div>
 
-       
+
 
         </div>
         <div class="modal-footer">
@@ -56,8 +56,12 @@ Marquee
             <tr>
                 <td>{{ $data->text }}</td>
                 <td>
-                    <a class="btn btn-warning" href="{{route('admin.marquee.edit',$data->id)}}">Edit</a>
-                    <a class="btn btn-danger" href="{{route('admin.marquee.delete',$data->id)}}">Delete</a>
+                    <a style="float: left;margin-right:10px;" class="btn btn-warning" href="{{route('admin.marquee.edit',$data->id)}}">@lang('common.edit')</a>
+                    <form method="post" action="{{ route('admin.marquee.destroy',$data->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">@lang('common.delete')</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

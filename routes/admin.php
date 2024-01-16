@@ -120,20 +120,12 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('delete_confirm/{id}',[WardController::class,'delete_confirm'])->name('ward.delete_confirm');
 
         //============ Carousel =============
-        Route::get('carousel',[CarouselController::class,'index'])->name('carousel.index');
-        Route::post('carousel_upload', [CarouselController::class, 'store'])->name('carousel.store');
-        Route::get("/edit/{id}", [CarouselController::class, "edit"])->name('carousel.carousel_edit');
-        Route::post("/update/{id}", [CarouselController::class, "update"])->name('carousel.update');
-        Route::get("/delete/{id}", [CarouselController::class, "destroy"])->name('carousel.carousel_delete');
-        
+        Route::resource('carousel',CarouselController::class);
+
 
         //============ marquee =============
-        Route::get('marquee',[MarqueeController::class,'index'])->name('marquee.index');
-        Route::post('marquee_upload', [MarqueeController::class, 'store'])->name('marquee.store');
-        Route::get("/edit/{id}", [MarqueeController::class, "edit"])->name('marquee.edit');
-        Route::post("/update/{id}", [MarqueeController::class, "update"])->name('marquee.update');
-        Route::get("/delete/{id}", [MarqueeController::class, "destroy"])->name('marquee.delete');
-        
+        Route::resource('marquee',MarqueeController::class);
+
 
         //============ sponsor =============
         Route::get('sponsor',[SponsorController::class,'index'])->name('sponsor.index');
@@ -141,7 +133,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get("/edit/{id}", [SponsorController::class, "edit"])->name('sponsor.edit');
         Route::post("/update/{id}", [SponsorController::class, "update"])->name('sponsor.update');
         Route::get("/delete/{id}", [SponsorController::class, "destroy"])->name('sponsor.delete');
-       
+
 
 
     });

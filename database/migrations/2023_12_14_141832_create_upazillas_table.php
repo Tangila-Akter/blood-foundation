@@ -18,6 +18,7 @@ class CreateUpazillasTable extends Migration
             $table->foreignId('division_id')->constrained('divisions')->onDelete('cascade');
             $table->foreignId('district_id')->constrained('districts')->onDelete('cascade');
             $table->string('title');
+            $table->string('title_bn')->nullable();
             $table->string('code')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
@@ -31,6 +32,7 @@ class CreateUpazillasTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('upazillas');
     }
 }

@@ -13,7 +13,7 @@ class CarouselController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function carousel_index()
+    public function index()
     {
         $data = Carousel::all();
         return view('admin.carousel.index', compact('data'));

@@ -120,7 +120,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('delete_confirm/{id}',[WardController::class,'delete_confirm'])->name('ward.delete_confirm');
 
         //============ Carousel =============
-        Route::get('carousel',[CarouselController::class,'carousel_index'])->name('carousel.index');
+        Route::get('carousel',[CarouselController::class,'index'])->name('carousel.index');
         Route::post('carousel_upload', [CarouselController::class, 'store'])->name('carousel.store');
         Route::get("/edit/{id}", [CarouselController::class, "edit"])->name('carousel.carousel_edit');
         Route::post("/update/{id}", [CarouselController::class, "update"])->name('carousel.update');

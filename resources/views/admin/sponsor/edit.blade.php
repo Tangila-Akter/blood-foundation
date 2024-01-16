@@ -12,7 +12,7 @@ Carousel
     <form action="{{route('admin.sponsor.update',$data->id)}}" method="post" enctype="multipart/form-data">
       @csrf
       <div>
-          <label>Title:</label>
+          <label>Link:</label>
           <input class="form-control" name="link"  value="{{$data->link}}" >
       </div>
 

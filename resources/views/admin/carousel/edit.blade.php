@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Sponsor
+Carousel
 @endsection
 
 
@@ -9,17 +9,17 @@ Sponsor
 @section('content')
   {{-- table list starts --}}
   <div class="block-content block-content-full">
-    <form action="{{url('admin.sponsor.update',$data->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.carousel.update',$data->id)}}" method="post" enctype="multipart/form-data">
       @csrf
       <div>
-          <label>Link:</label>
-          <input class="form-control" name="link"  value="{{$data->link}}" >
-      </div>
+        <label>Title:</label>
+        <input class="form-control" name="title"  value="{{$data->title}}" >
+    </div>
 
       <div>
           <label>Image:</label>
           <input class="form-control" name="image" type="file">
-          <img src="{{ asset('sponsor') }}/{{ $data->image }}" alt="" style="height:80px;" class="img-fluid">
+          <img src="{{ asset('carousel') }}/{{ $data->image }}" alt="" style="height:80px;" class="img-fluid">
       </div>
 
 

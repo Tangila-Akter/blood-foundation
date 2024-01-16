@@ -11,7 +11,7 @@ Carousel
 <button type="button" class="btn btn-primary mt-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add Carousel
   </button><br>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -61,8 +61,12 @@ Carousel
                 <td>{{ $data->title }}</td>
                 <td><img height="100" width="100" src="../carousel/{{ $data->image }}"></td>
                 <td>
-                    <a class="btn btn-warning" href="{{route('admin.carousel.edit',$data->id)}}">Edit</a>
-                    <a class="btn btn-danger" href="{{route('admin.carousel.delete',$data->id)}}">Delete</a>
+                    <a style="float: left;margin-right:10px;" class="btn btn-warning" href="{{route('admin.carousel.edit',$data->id)}}">Edit</a>
+                    <form method="post" action="{{ route('admin.carousel.destroy',$data->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

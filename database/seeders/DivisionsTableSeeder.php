@@ -21,23 +21,36 @@ class DivisionsTableSeeder extends Seeder
         \DB::table('divisions')->insert(array (
             0 => 
             array (
-                'id' => 1,
-                'country_id' => 1,
-                'title' => 'Chittagong',
                 'code' => 'CHI',
-                'created_by' => 1,
+                'country_id' => 1,
                 'created_at' => '2024-01-10 16:43:15',
+                'created_by' => 1,
+                'id' => 1,
+                'title' => 'Chittagong',
+                'title_bn' => 'চট্টগ্রাম',
                 'updated_at' => '2024-01-10 16:43:32',
             ),
             1 => 
             array (
-                'id' => 2,
+                'code' => '5546',
                 'country_id' => 1,
-                'title' => 'Rajshahi',
-                'code' => NULL,
-                'created_by' => 1,
                 'created_at' => '2024-01-13 10:29:09',
-                'updated_at' => '2024-01-13 10:29:09',
+                'created_by' => 1,
+                'id' => 2,
+                'title' => 'Rajshahi',
+                'title_bn' => 'রাজশাহী',
+                'updated_at' => '2024-01-16 05:34:46',
+            ),
+            2 => 
+            array (
+                'code' => '096',
+                'country_id' => 1,
+                'created_at' => '2024-01-15 19:22:50',
+                'created_by' => 1,
+                'id' => 7,
+                'title' => 'Mymensingh',
+                'title_bn' => 'ময়মনসিংহ',
+                'updated_at' => '2024-01-15 19:22:50',
             ),
         ));
         

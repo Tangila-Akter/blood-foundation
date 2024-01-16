@@ -15,60 +15,46 @@ class UpazillaRepository
 
     public static function get($request = null)
     {
-        $upazillas = Upazilla::orderBy('division_id', 'ASC');
+        $upazillas = District::orderBy('id', 'ASC')->with('upazilas');
 
-        if($request != null){
-            if($request->has('division_id')){
-                $upazillas->where('division_id', $request->division_id);
-            }
-            if($request->has('district_id')){
-                $upazillas->where('district_id', $request->district_id);
-            }
-        }
+        // if($request != null){
+        //     if($request->has('division_id')){
+        //         $upazillas->where('division_id', $request->division_id);
+        //     }
+        //     if($request->has('district_id')){
+        //         $upazillas->where('district_id', $request->district_id);
+        //     }
+        // }
 
-        if(auth('admin')->check()){
-            $upazillas->accessible();
-        }
+        // if(auth('admin')->check()){
+        //     $upazillas->accessible();
+        // }
 
        return $upazillas->get();
     }
 
     public static function create($request)
     {
-        $validator = Validator::make($request->all(),[
-            "district_id" => "required",
-            "title.*" => ['required', new UniqueTitle('Upazilla', 'district_id', $request->district_id)],
-        ]);
-
-        $input = $request->except('_token');
-
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }else{
-            DB::beginTransaction();
-            if(is_array($request->title)){
-
-                try{
-                    $division_id = District::where('id', $request->district_id)->first()->division_id;
-                    foreach($request->title as $title){
-                        Upazilla::create([
-                            'title' => $title,
-                            'district_id' => $request->district_id,
-                            'division_id' => $division_id
-                        ]);
-                    }
-
-                    DB::commit();
-                    return response()->json(['success' => 'Upazilla created successfully done!']);
-                }catch(Exception $exception){
-                    DB::rollBack();
-                    return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
+            // return $request->district_id;
+            try{
+                $division_id = District::where('id', $request->district_id)->first()->division_id;
+                for ($i=0; $i < count($request->title) ; $i++)
+                {
+                    Upazilla::create([
+                        'title' => $request->title[$i],
+                        'title_bn' => $request->title_bn[$i],
+                        'district_id' => $request->district_id,
+                        'division_id' => $division_id,
+                    ]);
                 }
-
+                return response()->json(['success' => __('upazila.create_message')]);
+            }catch(Exception $exception){
+                // DB::rollBack();
+                return response()->json(['error' => __('upazila.error_message')]);
             }
 
 
-        }
+
     }
 
     public static function update($request, $id)
@@ -84,10 +70,10 @@ class UpazillaRepository
         }else{
 
             if(Upazilla::find($id)->update($input)){
-                return response()->json(['success' => 'Upazilla updated successfully done!']);
+                return response()->json(['success' => __('upazila.edit_message')]);
 
             }else{
-                return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
+                return response()->json(['error' => __('upazila.edit_error')]);
             }
         }
     }
@@ -96,10 +82,10 @@ class UpazillaRepository
     public static function delete($id)
     {
         if(Upazilla::find($id)->delete()){
-            return response()->json(['success' => 'Upazilla deleted successfully done!']);
+            return response()->json(['success' => __('upazila.delete_message')]);
 
         }else{
-            return response()->json(['error' => 'Data Does not deleted.someting went to wrong. please try again!']);
+            return response()->json(['error' => __('upazila.delete_error')]);
         }
     }
 
@@ -133,7 +119,7 @@ class UpazillaRepository
             if($id != null){
                 Upazilla::find($id)->delete();
             }else{
-                return response()->json(['error' => 'Someting went to wrong. please try again!']);
+                return response()->json(['error' => __('upazila.delete_message')]);
             }
         }
         return response()->json(['success' => 'Upazilla deleted successfully done!']);

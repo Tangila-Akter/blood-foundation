@@ -18,7 +18,7 @@
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="block block-rounded">
                 <div class="block-header">
-                    <a href="{{ route('admin.upazillas.index', ['district_id' => $data->id]) }}" class="flex-grow-1 text-muted fs-md fw-bold">
+                    <a href="{{ route('admin.upazillas.index', ['district_id' => $d->id]) }}" class="flex-grow-1 text-muted fs-md fw-bold">
                         @if($lang == 'en')
                         {{ $d->title ?: $d->title_bn }}
                         @else

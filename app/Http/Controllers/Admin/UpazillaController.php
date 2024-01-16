@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\UpazillaTranslation;
 use App\Http\Controllers\Controller;
 use App\Repository\UpazillaRepository;
+use App\Http\Requests\UpazillaRequest;
 
 class UpazillaController extends Controller
 {
@@ -38,7 +39,7 @@ class UpazillaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpazillaRequest $request)
     {
         return UpazillaRepository::create($request);
     }

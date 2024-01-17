@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\MarqueeController;
 use App\Http\Controllers\Admin\SponsorController;
 
+
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login');
     Route::post('login', [AdminAuthController::class, 'save_login'])->name('save_login');
@@ -134,6 +135,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::post("/update/{id}", [SponsorController::class, "update"])->name('sponsor.update');
         Route::get("/delete/{id}", [SponsorController::class, "destroy"])->name('sponsor.delete');
 
+        //============ Developer =============
+        Route::resource('developer',DeveloperController::class);
 
 
     });

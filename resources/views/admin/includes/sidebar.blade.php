@@ -152,6 +152,13 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Route::currentRouteName() == 'admin.developer.index' ? 'active' : '' }}" href="{{ route('admin.developer.index') }}">
+                        <i class="nav-main-link-icon fa fa-border-all"></i>
+                        <span class="nav-main-link-name">Organization speece</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <!-- END Side Navigation -->

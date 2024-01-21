@@ -47,7 +47,7 @@
                         </li>
                         <ul class="dropdown_list">
                             @foreach($foundation as $data)
-                            <li><a href="{{route('contactFoundation',['id'=>$data->id])}}">Contact{{$data->name}}Foundation</a></li>
+                            <li><a href="{{route('contactFoundation',['id'=>$data->id])}}">Contact</a></li>
                             @endforeach
 
                         </ul>

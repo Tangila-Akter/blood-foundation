@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\VillageController;
 use App\Http\Controllers\Admin\DeveloperController;
 use App\Http\Controllers\Admin\WardController;
 use App\Http\Controllers\Admin\CarouselController;
+use App\Http\Controllers\Admin\FoodController;
 use App\Http\Controllers\Admin\MarqueeController;
 use App\Http\Controllers\Admin\SponsorController;
 
@@ -137,6 +138,9 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
         //============ Developer =============
         Route::resource('developer',DeveloperController::class);
+
+        //============ Food for all =============
+        Route::resource('food',FoodController::class);
 
 
     });

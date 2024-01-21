@@ -158,6 +158,12 @@
                         <span class="nav-main-link-name">Organization speece</span>
                     </a>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Route::currentRouteName() == 'admin.food.index' ? 'active' : '' }}" href="{{ route('admin.food.index') }}">
+                        <i class="nav-main-link-icon fa fa-border-all"></i>
+                        <span class="nav-main-link-name">Food for all</span>
+                    </a>
+                </li>
 
             </ul>
         </div>

@@ -65,8 +65,8 @@
                     <button class="logout " ><a href="{{route('login')}}" class="mx-lg-5">LogIn</a></button>
                     <button class="logout " ><a href="{{route('register')}}" class="mx-lg-5">Register</a></button>
                     @endif
-                    <div class="nav_toggol"><img src="assets/Image/circled-menu.png" alt=""></div>
-                    <div class="close_toggol"><img src="assets/Image/close.svg" alt=""></div>
+                    <div class="nav_toggol" style="margin-left: 90%;"><img src="{{asset('frontend/assets/Image/circled-menu.png')}}" alt=""></div>
+                    <div class="close_toggol"><img src="{{asset('frontend/assets/Image/close.svg')}}" alt=""></div>
                 </div>
             </div>
         </nav>

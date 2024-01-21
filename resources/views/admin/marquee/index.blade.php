@@ -25,7 +25,7 @@ Marquee
         @csrf
         <div>
             <label>Message:</label>
-            <input class="form-control" name="text"  placeholder="Write a title" >
+            <textarea class="form-control" name="text"  placeholder="Write a message" ></textarea>
         </div>
 
 

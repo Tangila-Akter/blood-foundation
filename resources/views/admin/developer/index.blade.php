@@ -78,14 +78,14 @@ Organization speece
                 <td>{{ $data->SocialMediaLink }}</td>
                 <td>{{ $data->Description }}</td>
                 <td><img height="100" width="100" src="../developer/{{ $data->image }}"></td>
-                <!-- <td>
-                    <a style="float: left;margin-right:10px;" class="btn btn-warning" href="{{route('admin.carousel.edit',$data->id)}}">Edit</a>
-                    <form method="post" action="{{ route('admin.carousel.destroy',$data->id) }}">
+                <td>
+                    <a style="float: left;margin-right:10px;" class="btn btn-warning" href="{{route('admin.developer.edit',$data->id)}}">Edit</a>
+                    <form method="post" action="{{ route('admin.developer.destroy',$data->id) }}">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                </td> -->
+                </td>
             </tr>
             @endforeach
         </tbody>

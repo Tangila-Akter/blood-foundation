@@ -1,0 +1,57 @@
+login: login part 1= 	user login(when login sucssesful scroll user profile)
+	login part 2=	when call sucssesful show foundation dashboard
+		     	foundation login input(email address, phone number, registration account number, password).
+		     	foundation profile input( Permit paper, logo, phone number, office address, on/off button),
+		     	after approves foundation account(chairmen name, all user login 1  input)
+		     	add member (position, all user login 1  input, 3 user type(lifetime, sliver, gold, paltinum))- certificate and od card genarate
+
+
+file:///D:/laragon/www/E_Bondhu/FHome.html(foundation):can manage donation amount like history
+			can send request for blood(basically can post in behave off patient)
+			Our Partners slider(chairman/ president img and des)
+			commite= (img, name, position, blood group, emergency contact number, social media links)
+			gallery= only img
+			events= (file:///D:/laragon/www/E_Bondhu/ffa.html)event on/off features (show note of that event position)
+			projects= just project info show
+			contact= foundation contact
+			foundation volunteer registration/login
+
+(hospital):
+			login part=	when call sucssesful show hospital dashboard
+			can send request for blood(basically can post in behave off patient)
+		     	hospital login input(email address, phone number, registration account number, password).
+		     	hospital profile input( Permit paper, logo, phone number, office address, on/off button),
+		     	after approves hospital account(chairmen name, all user login 1  input)
+		     	add member (position, all user login 1  input, 3 user type(lifetime, sliver, gold, paltinum))- certificate and od card genarate
+
+			can manage donation amount like history
+			Our Partners slider(chairman/ president img and des)
+			commite= (img, name, position, blood group, emergency contact number, social media links)
+			gallery= only img
+			events= (file:///D:/laragon/www/E_Bondhu/ffa.html)event on/off features (show note of that event position)
+			projects= just project info show
+			contact= foundation contact
+			hospital volunteer registration/login
+
+
+user panel= 		home page(Carousel , latest news line, sponser logo slide with social media link)
+			organization Speece(img, name, Speece)
+			All documents(all achivments show as img)
+			blood request check(can check with post_id , show who wants to give blood)
+			profile(add session, vertical nav section on the left with mobaile button)
+			Donation()
+			income expenditure(Balance statement history)
+			foundation(add foundation logo , link and filter)
+			blood request post()
+
+
+super admin=		dashboard()
+			home page feautre(Carousel, marquee text, sponsership logo slider)
+			organization speece 
+			all document(img of achievement)
+			food for all(it will have post which will have img, description of that event. also have donation button for that event)
+			health(it will have post which will have img, description of that event. also have donation button for that event)
+			education(it will have post which will have img, description of that event. also have donation button for that event)
+			Gallery(inspairation img)
+			user account(add member)
+			

@@ -60,7 +60,7 @@ Marquee
                     <form method="post" action="{{ route('admin.marquee.destroy',$data->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">@lang('common.delete')</button>
+                        <button onclick="return confirm('Are You Sure ?')" type="submit" class="btn btn-danger">@lang('common.delete')</button>
                     </form>
                 </td>
             </tr>

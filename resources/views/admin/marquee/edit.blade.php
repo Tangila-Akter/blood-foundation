@@ -11,6 +11,7 @@ Marquee
   <div class="block-content block-content-full">
     <form action="{{route('admin.marquee.update',$data->id)}}" method="post" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div>
           <label>Message:</label>
           <input class="form-control" name="text"  value="{{$data->text}}" >

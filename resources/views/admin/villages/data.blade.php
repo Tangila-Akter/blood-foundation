@@ -1,7 +1,5 @@
 
-
 <div class="row">
-
     @foreach ($village as $data)
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="block block-rounded">

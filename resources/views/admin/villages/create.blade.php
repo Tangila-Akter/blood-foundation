@@ -2,7 +2,9 @@
     <div class="modal-content">
         <div class="block block-rounded block-themed block-transparent mb-0">
             <div class="block-header bg-gd-default">
-                <h3 class="block-title">Create New Villages</h3>
+                <h3 class="block-title">
+                    @lang('village.create_title')
+                </h3>
                 <div class="block-options">
                     <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa fa-fw fa-times"></i>
@@ -16,10 +18,16 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-12 mt-4" id="">
                             <select class="form-select form-select-sm js-select" name="division" id="division" onchange="return findDistrict()">
-                                <option value="">-- Select Division ---</option>
+                                <option value="">-- @lang('common.select_division') ---</option>
                                @if(isset($param['division']))
                                @foreach ($param['division'] as $d)
-                                <option value="{{ $d->id }}">{{ $d->title }}</option>
+                                <option value="{{ $d->id }}">
+                                    @if($lang == 'en')
+                                    {{ $d->title ?: $d->title_bn }}
+                                    @else
+                                    {{ $d->title_bn ?: $d->title }}
+                                    @endif
+                                </option>
                                @endforeach
                                @endif
                             </select>
@@ -60,14 +68,14 @@
 
                     </div>
                     <button type="submit" class="submit d-none btn btn-sm btn-outline-primary mb-3 mt-2">
-                        Save Villages
+                        @lang('village.save')
                     </button>
 
                 </form>
                 <!-- END Form Grid with Labels -->
             </div>
             <div class="block-content block-content-full text-end bg-gray-lighter">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">@lang('common.close')</button>
             </div>
         </div>
     </div>

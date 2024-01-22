@@ -11,6 +11,7 @@ Carousel
   <div class="block-content block-content-full">
     <form action="{{route('admin.carousel.update',$data->id)}}" method="post" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div>
         <label>Title:</label>
         <input class="form-control" name="title"  value="{{$data->title}}" >

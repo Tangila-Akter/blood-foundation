@@ -92,7 +92,7 @@
                 <li class="nav-main-item">
                     <a class="nav-main-link " href="{{ route('admin.ward.index') }}">
                         <i class="nav-main-link-icon fa fa-border-all"></i>
-                        <span class="nav-main-link-name">{{ trans('Ward') }}</span>
+                        <span class="nav-main-link-name">@lang('ward.index_title') </span>
                     </a>
                 </li>
                 <li class="nav-main-item">

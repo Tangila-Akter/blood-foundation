@@ -1,38 +1,38 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Villages
+    @lang('village.index_title')
 @endsection
 
 @section('breadcrumb')
-    <h1 class="flex-grow-1 fs-3 fw-bold my-2 my-sm-3">Villages</h1>
+    <h1 class="flex-grow-1 fs-3 fw-bold my-2 my-sm-3">@lang('village.index_title')</h1>
     <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item">Admin</li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('admin.divisions.index') }}">Division</a></li>
+            <li class="breadcrumb-item">@lang('common.admin')</li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard')}}">@lang('common.dashboard')</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.divisions.index') }}">@lang('common.admin')</a></li>
 
             @if (request()->has('division_id'))
                 <li class="breadcrumb-item">{{ get_division_by_id(request()->get('division_id')) }}</li>
             @endif
 
-            <li class="breadcrumb-item"><a href="{{ route('admin.districts.index') }}">District</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.districts.index') }}">@lang('district.index_title')</a></li>
             @if (request()->has('district_id'))
                 <li class="breadcrumb-item">{{ get_district_by_id(request()->get('district_id')) }}</li>
             @endif
 
-            <li class="breadcrumb-item"><a href="{{ route('admin.upazillas.index') }}">Upazilla</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.upazillas.index') }}">@lang('upazila.index_title')</a></li>
             @if (request()->has('upazilla_id'))
                 <li class="breadcrumb-item">{{ get_district_by_id(request()->get('upazilla_id')) }}</li>
             @endif
 
             <li class="breadcrumb-item" aria-current="page">
-               <a href="{{ route('admin.unions.index') }}">Union</a>
+               <a href="{{ route('admin.unions.index') }}">@lang('union.index_title')</a>
             </li>
             <li class="breadcrumb-item" aria-current="page">
-               <a href="{{ route('admin.ward.index') }}">Ward</a>
+               <a href="{{ route('admin.ward.index') }}">@lang('ward.index_title')</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Village</li>
+            <li class="breadcrumb-item active" aria-current="page">@lang('village.index_title')</li>
         </ol>
     </nav>
 @endsection
@@ -44,14 +44,14 @@
             <!-- Top Products -->
             <div class="block block-rounded">
                 <div class="block-header block-header-default">
-                    <h3 class="block-title">List Of Villages
+                    <h3 class="block-title">@lang('village.list_title')
 
                     </h3>
 
                     <div class="block-options">
                         <button type="button" class="btn btn-sm btn-primary show-modal"
                             data-url="{{ route('admin.villages.create') }}">
-                            Create New
+                            + @lang('common.create_new')
                         </button>
                     </div>
 
@@ -62,10 +62,16 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12 mt-4" id="">
                     <select class="form-select form-select-sm js-select" name="division" id="division_id" onchange="return getAllDistrict()">
-                        <option value="">-- Select Division --</option>
+                        <option value="">-- @lang('common.select_division') --</option>
                        @if(isset($param['division']))
                        @foreach ($param['division'] as $d)
-                        <option value="{{ $d->id }}">{{ $d->title }}</option>
+                        <option value="{{ $d->id }}">
+                            @if($lang == 'en')
+                            {{ $d->title ?: $d->title_bn}}
+                            @else
+                            {{ $d->title_bn ?: $d->title }}
+                            @endif
+                        </option>
                        @endforeach
                        @endif
                     </select>

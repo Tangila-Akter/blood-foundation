@@ -209,14 +209,18 @@ class VillageController extends Controller
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm" id="ward" name="ward" onchange="getSubmit()">
-            <option value="">-- Select One --</option>';
+            <option value="">-- '.__('common.select_ward').' --</option>';
             foreach($data as $v)
             {
-                $check = Village::where('ward_id',$v->id)->count();
-                if($check == 0)
+                if(config('app.locale') == 'en')
                 {
-                    $output.='<option value="'.$v->id.'">'.$v->title.' No Ward</option>';
+                    $title = $v->title ?: $v->title_bn;
                 }
+                else
+                {
+                    $title = $v->title_bn ?: $v->title;
+                }
+                $output.='<option value="'.$v->id.'">'.$title.' '.__('common.no_ward').'</option>';
             }
             $output.='</select>';
 
@@ -235,10 +239,18 @@ class VillageController extends Controller
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm" id="ward" name="ward" onchange="getAllVillages()">
-            <option value="">-- Select One --</option>';
+            <option value="">-- '.__('common.select_ward').' --</option>';
             foreach($data as $v)
             {
-                $output.='<option value="'.$v->id.'">'.$v->title.' No Ward</option>';
+                if(config('app.locale') == 'en')
+                {
+                    $title = $v->title ?: $v->title_bn;
+                }
+                else
+                {
+                    $title = $v->title_bn ?: $v->title;
+                }
+                $output.='<option value="'.$v->id.'">'.$title.' '.__('common.no_ward').'</option>';
             }
             $output.='</select>';
 

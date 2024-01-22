@@ -13,69 +13,40 @@ use Illuminate\Support\Facades\Validator;
 
 class UnionRepository
 {
-    
+
     public static function get($request = null)
     {
-        $unions = Union::orderBy('division_id', 'ASC');
-
-        if($request != null){
-            if($request->has('division_id')){
-                $unions->where('division_id', $request->division_id);
-            }
-            if($request->has('district_id')){
-                $unions->where('district_id', $request->district_id);
-            }
-            if($request->has('upazilla_id')){
-                $unions->where('upazilla_id', $request->upazilla_id);
-            }
+        $unions = Upazilla::orderBy('id', 'ASC')->with('unions');
+        if(isset($request->upazilla_id))
+        {
+            $unions->where('id',$request->upazilla_id);
         }
 
-        if(auth('admin')->check()){
-            $unions->accessible();
-        }
 
        return $unions->get();
     }
 
     public static function create($request)
     {
-        $validator = Validator::make($request->all(),[
-            "upazilla_id" => "required",
-            "title.*" => ['required', new UniqueTitle('Union', 'upazilla_id', $request->upazilla_id)],
-        ]);
-
-        $input = $request->except('_token');
-
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()->all()]);
-        }else{
-            DB::beginTransaction();
-            if(is_array($request->title)){
-
-                try{
-                    $upazilla = Upazilla::where('id', $request->upazilla_id)->first();
-                    if($upazilla != null){
-                        foreach($request->title as $title){
-                            Union::create([
-                                'title' => $title,
-                                'upazilla_id' => $request->upazilla_id,
-                                'district_id' => $upazilla->district_id,
-                                'division_id' => $upazilla->division_id,
-                            ]);
-                        }
+        if(is_array($request->title)){
+            try{
+                $upazilla = Upazilla::where('id', $request->upazilla_id)->first();
+                if($upazilla != null){
+                    for ($i=0; $i < count($request->title) ; $i++) {
+                        Union::create([
+                            'title' => $request->title[$i],
+                            'title_bn' => $request->title_bn[$i],
+                            'upazilla_id' => $request->upazilla_id,
+                            'district_id' => $upazilla->district_id,
+                            'division_id' => $upazilla->division_id,
+                        ]);
                     }
-                    
-
-                    DB::commit();
-                    return response()->json(['success' => 'Union created successfully done!']);
-                }catch(Exception $exception){
-                    DB::rollBack();
-                    return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
                 }
-                
+                return response()->json(['success' => __('union.create_message')]);
+            }catch(Exception $exception){
+                DB::rollBack();
+                return response()->json(['error' => __('union.create_error')]);
             }
-
-         
         }
     }
 
@@ -92,10 +63,10 @@ class UnionRepository
         }else{
 
             if(Union::find($id)->update($input)){
-                return response()->json(['success' => 'Union updated successfully done!']);
+                return response()->json(['success' => __('union.update_message')]);
 
             }else{
-                return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
+                return response()->json(['error' => __('union.update_error')]);
             }
         }
     }
@@ -104,10 +75,10 @@ class UnionRepository
     public static function delete($id)
     {
         if(Union::find($id)->delete()){
-            return response()->json(['success' => 'Union deleted successfully done!']);
+            return response()->json(['success' => __('union.delete_message')]);
 
         }else{
-            return response()->json(['error' => 'Data Does not deleted.someting went to wrong. please try again!']);
+            return response()->json(['error' => __('union.delete_error')]);
         }
     }
 
@@ -119,7 +90,7 @@ class UnionRepository
         if($request->has('status') && $request->status == 1){
             $input['status'] = 1;
         }
-   
+
         if($request->has('ids')){
             $ids = $request->ids;
             foreach($ids as $id){

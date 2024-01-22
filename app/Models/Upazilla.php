@@ -41,7 +41,7 @@ class Upazilla extends Model
      */
     public function unions()
     {
-        return $this->hasMany(Union::class, 'upazila_id', 'id');
+        return $this->hasMany(Union::class, 'upazilla_id', 'id');
     }
 
     /**

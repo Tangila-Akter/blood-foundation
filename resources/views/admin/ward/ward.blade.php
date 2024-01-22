@@ -7,7 +7,12 @@
             <div class="block block-rounded">
                 <div class="block-header">
                     <a href="{{ route('admin.villages.all_village',['ward_id' => $data->id]) }}" class="flex-grow-1 text-muted fs-md fw-bold">
-                        {{ $data->title }} No Ward
+                        @if($lang == 'en')
+                        {{ $data->title ?: $data->title_bn}}
+                        @else
+                        {{ $data->title_bn ?: $data->title}}
+                        @endif
+                        @lang('common.no_ward');
                     </a>
                     <div class="block-options">
                         <div class="dropdown">

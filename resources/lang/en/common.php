@@ -15,5 +15,6 @@ return array(
     'are_you_sure' => 'Are You Sure To Delete This Data ?',
     'yes' => 'Yes',
     'no' => 'No',
+    'no_ward' =>'No Ward',
 );
 

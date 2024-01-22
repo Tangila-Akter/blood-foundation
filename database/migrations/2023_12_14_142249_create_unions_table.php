@@ -19,6 +19,7 @@ class CreateUnionsTable extends Migration
             $table->foreignId('district_id')->constrained('districts')->onDelete('cascade');
             $table->foreignId('upazilla_id')->constrained('upazillas')->onDelete('cascade');
             $table->string('title');
+            $table->string('title_bn')->nullable();
             $table->string('code')->nullable();
             $table->foreignId('created_by')->nullable()->constrained('admins')->onDelete('set null');
             $table->timestamps();
@@ -32,6 +33,7 @@ class CreateUnionsTable extends Migration
      */
     public function down()
     {
+        // Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('unions');
     }
 }

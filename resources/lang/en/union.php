@@ -1,0 +1,21 @@
+<?php
+return array(
+    'index_title' => 'Union',
+    'list_of_union' => 'List Of Union',
+    'create_title' => 'Create Union',
+    'save' => 'Save Union',
+    'upzila_required' => 'Please Select Upazila',
+    'title_required' => 'Please Give Title',
+    'create_message' => 'Union Created Successfully',
+    'create_error' => 'Union Created Unsuccessfully',
+    'edit_title' => 'Edit Union',
+    'title' => 'Title',
+    'title_bn' => 'Title in Bangla',
+    'code' => 'Code',
+    'update_message' => 'Union Updated Successfully',
+    'update_error' => 'Union Does Not Updated',
+    'delete_title' => 'Delete Union',
+    'confirmation' => 'Are You Want To Delete This Union ?',
+    'delete_message' => 'Union Delete Successfully',
+    'delete_error' => 'Union Does Not Deleted',
+);

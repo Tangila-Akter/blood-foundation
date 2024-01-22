@@ -9,6 +9,7 @@ use App\Models\UnionTranslation;
 use Illuminate\Support\Facades\DB;
 use App\Repository\UnionRepository;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UnionRequest;
 
 class UnionController extends Controller
 {
@@ -38,7 +39,7 @@ class UnionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UnionRequest $request)
     {
         return UnionRepository::create($request);
     }
@@ -109,7 +110,7 @@ class UnionController extends Controller
             $datas = UnionRepository::get($request);
         }
 
-        
+
         return view('admin.unions.data', compact('datas'));
     }
 
@@ -124,17 +125,17 @@ class UnionController extends Controller
         }else{
             return response()->json(['error' => 'You Have No Language Active.Someting went to wrong. please try again!']);
         }
-       
+
     }
 
     public function save_translation(Request $request, $id, $lang_id)
     {
-        
+
         $input = $request->except('_token');
 
         $input['union_id'] = $id;
         $input['language_id'] = $lang_id;
-        
+
 
         if(UnionTranslation::updateOrCreate(['language_id' => $lang_id, 'union_id' => $id], $input)){
             return response()->json(['success' => 'Union Transalation updated successfully done!']);
@@ -142,7 +143,7 @@ class UnionController extends Controller
         }else{
             return response()->json(['error' => 'Data Does not insert.someting went to wrong. please try again!']);
         }
-        
+
     }
 
 
@@ -167,22 +168,22 @@ class UnionController extends Controller
 
 
         return view('admin.unions.all-translation',compact('unions','language'));
-        
+
     }
 
 
     public function save_all_translation(Request $request, $id)
     {
-       
+
         $language_id = $id;
         $total_request = count($request->id);
 
         DB::beginTransaction();
-        for ($i=0; $i < $total_request; $i++) { 
+        for ($i=0; $i < $total_request; $i++) {
             $input['language_id'] = $language_id;
             $input['union_id'] = $request->id[$i];
             $input['title'] = $request->title[$i];
-    
+
             UnionTranslation::updateOrCreate(['language_id' => $language_id, 'union_id' => $input['union_id']], $input);
         }
         DB::commit();

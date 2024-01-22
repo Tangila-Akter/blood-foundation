@@ -86,7 +86,7 @@
                 <li class="nav-main-item">
                     <a class="nav-main-link {{ Route::currentRouteName() == 'admin.unions.index' ? 'active' : '' }}" href="{{ route('admin.unions.index') }}">
                         <i class="nav-main-link-icon fa fa-border-all"></i>
-                        <span class="nav-main-link-name">{{ trans('Union') }}</span>
+                        <span class="nav-main-link-name">@lang('union.index_title')</span>
                     </a>
                 </li>
                 <li class="nav-main-item">

@@ -32,7 +32,7 @@ class CreateUpazillasTable extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
+        // Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('upazillas');
     }
 }

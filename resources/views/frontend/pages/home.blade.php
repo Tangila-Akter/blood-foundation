@@ -22,16 +22,21 @@
                       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div class="carousel-inner">
-                        
-                        
+
+
                             {{-- <img src="" class="d-block w-100" alt="..."> --}}
-                            
-                          
+
+                        @if(count($carousel) > 0)
                           @foreach ($carousel as $carousel)
-                          <div class="carousel-item ">
+                          <div class="carousel-item">
                           <img src="../carousel/{{ $carousel->image }}" class="d-block w-100" style="height: 60vh;">
                         </div>
-                          @endforeach
+                        @endforeach
+                        @else
+                        <div class="carousel-item active">
+                            <img src="{{ asset('frontend/assets/Image/logo.png') }}" class="d-block w-100" style="height: 60vh;">
+                        </div>
+                          @endif
 
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -59,17 +64,17 @@
             </div>
         </div>
         <marquee>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex, 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex,
             fugit enim amet laudantium laboriosam! Ad quisquam reiciendis error?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex, 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex,
             fugit enim amet laudantium laboriosam! Ad quisquam reiciendis error?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex, 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex,
             fugit enim amet laudantium laboriosam! Ad quisquam reiciendis error?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex, 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam earum ex,
             fugit enim amet laudantium laboriosam! Ad quisquam reiciendis error?
         </marquee>
     </div>
-    
+
 </section>
 <!-- ---------- Hero end ---------- -->
 

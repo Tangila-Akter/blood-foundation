@@ -16,5 +16,13 @@ return array(
     'yes' => 'Yes',
     'no' => 'No',
     'no_ward' =>'No Ward',
+    'select_division' => 'Select Division',
+    'select_district' => 'Select District',
+    'select_upazila' => 'Select Upazila',
+    'select_union' => 'Select Union',
+    'no_district' => 'No District Found !',
+    'no_upazila' => 'No Upazila Found !',
+    'no_union' => 'No Union Found !',
+    'select_ward' => 'Select Ward',
 );
 

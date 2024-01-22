@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="block block-rounded block-themed block-transparent mb-0">
             <div class="block-header bg-gd-default">
-                <h3 class="block-title">Create New Ward</h3>
+                <h3 class="block-title">@lang('ward.edit_title')</h3>
                 <div class="block-options">
                     <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
                         <i class="fa fa-fw fa-times"></i>
@@ -24,14 +24,14 @@
 
                     </div>
                     <button type="submit" class="submit btn btn-sm btn-outline-primary mb-3 mt-2">
-                        Save Ward
+                        @lang('ward.save')
                     </button>
 
                 </form>
                 <!-- END Form Grid with Labels -->
             </div>
             <div class="block-content block-content-full text-end bg-gray-lighter">
-                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">@lang('common.close')</button>
             </div>
         </div>
     </div>

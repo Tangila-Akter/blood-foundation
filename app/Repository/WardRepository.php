@@ -52,11 +52,11 @@ class WardRepository implements WardInterface{
                 Ward::create($data);
             }
 
-            return response()->json(['success' => 'Ward Created Successfully']);
+            return response()->json(['success' => __('ward.create_message')]);
         }
         else
         {
-            return response()->json(['error' => 'Ward Not Created!']);
+            return response()->json(['error' => __('ward.create_error')]);
         }
     }
 
@@ -76,18 +76,18 @@ class WardRepository implements WardInterface{
 
         if($update)
         {
-            return response()->json(['success' => 'Ward Updated Successfully']);
+            return response()->json(['success' => __('ward.update_message')]);
         }
         else
         {
-            return response()->json(['error' => 'Ward Not Updated!']);
+            return response()->json(['error' => __('ward.update_error')]);
         }
     }
 
     public function destroy($id)
     {
         Ward::find($id)->delete();
-        return response()->json(['success' => 'Ward Delete Successfully']);
+        return response()->json(['success' => __('ward.delete_message')]);
     }
 
     public function restore()
@@ -111,17 +111,24 @@ class WardRepository implements WardInterface{
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm js-select" name="district" id="district" onchange="return findUpazila()">
-            <option value="">-- Select District --</option>';
+            <option value="">-- '.__('common.select_district').' --</option>';
             foreach($data as $v)
             {
-                $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                if(config('app.locale') == 'en')
+                {
+                    $title = $v->title ?: $v->title_bn;
+                }
+                else{
+                    $title = $v->title_bn ?: $v->title;
+                }
+                $output.='<option value="'.$v->id.'">'.$title.'</option>';
             }
             $output.='</select>';
             return $output;
         }
         else
         {
-            return '<b class="text-danger">No District Found!</b>';
+            return '<b class="text-danger">'.__('common.no_district').'</b>';
         }
     }
 
@@ -131,17 +138,24 @@ class WardRepository implements WardInterface{
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm js-select" name="upazila" id="upazila" onchange="return findUnion()">
-            <option value="">-- Select Upazila --</option>';
+            <option value="">-- '.__('common.select_upazila').' --</option>';
             foreach($data as $v)
             {
-                $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                if(config('app.locale') == 'en')
+                {
+                    $title = $v->title ?: $v->title_bn;
+                }
+                else{
+                    $title = $v->title_bn ?: $v->title;
+                }
+                $output.='<option value="'.$v->id.'">'.$title.'</option>';
             }
             $output.='</select>';
             return $output;
         }
         else
         {
-            return '<b class="text-danger">No Upazila Found!</b>';
+            return '<b class="text-danger">'.__('common.no_upazila').'</b>';
         }
     }
 
@@ -151,13 +165,20 @@ class WardRepository implements WardInterface{
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm js-select" name="union" id="union" onchange="getSubmit()">
-            <option value="">-- Select Union --</option>';
+            <option value="">-- '.__('common.select_union').' --</option>';
             foreach($data as $v)
             {
                 $check = Ward::where('union_id',$v->id)->count();
                 if($check == 0)
                 {
-                    $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                    if(config('app.locale') == 'en')
+                    {
+                        $title = $v->title ?: $v->title_bn;
+                    }
+                    else{
+                        $title = $v->title_bn ?: $v->title;
+                    }
+                    $output.='<option value="'.$v->id.'">'.$title.'</option>';
                 }
             }
             $output.='</select>';
@@ -165,7 +186,7 @@ class WardRepository implements WardInterface{
         }
         else
         {
-            return '<b class="text-danger">No Union Found!</b>';
+            return '<b class="text-danger">'.__('common.no_union').'</b>';
         }
     }
 
@@ -175,17 +196,24 @@ class WardRepository implements WardInterface{
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm js-select" name="district" id="district_id" onchange="return findAllUpazila()">
-            <option value="">-- Select District --</option>';
+            <option value="">-- '.__('common.select_district').' --</option>';
             foreach($data as $v)
             {
-                $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                if(config('app.locale') == 'en')
+                {
+                    $title = $v->title ?: $v->title_bn;
+                }
+                else{
+                    $title = $v->title_bn ?: $v->title;
+                }
+                $output.='<option value="'.$v->id.'">'.$title.'</option>';
             }
             $output.='</select>';
             return $output;
         }
         else
         {
-            return '<b class="text-danger">No District Found!</b>';
+            return '<b class="text-danger">'.__('common.no_district').'</b>';
         }
     }
 
@@ -195,17 +223,24 @@ class WardRepository implements WardInterface{
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm js-select" name="upazila" id="upazila_id" onchange="return findAllUnion()">
-            <option value="">-- Select Upazila --</option>';
+            <option value="">-- '.__('common.select_upazila').' --</option>';
             foreach($data as $v)
             {
-                $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                if(config('app.locale') == 'en')
+                {
+                    $title = $v->title ?: $v->title_bn;
+                }
+                else{
+                    $title = $v->title_bn ?: $v->title;
+                }
+                $output.='<option value="'.$v->id.'">'.$title.'</option>';
             }
             $output.='</select>';
             return $output;
         }
         else
         {
-            return '<b class="text-danger">No Upazila Found!</b>';
+            return '<b class="text-danger">'.__('common.no_upazila').'</b>';
         }
     }
 
@@ -217,17 +252,24 @@ class WardRepository implements WardInterface{
         if(count($data) > 0)
         {
             $output = '<select class="form-select form-select-sm js-select" name="union" id="union_id" onchange="getWard()">
-            <option value="">-- Select Union --</option>';
+            <option value="">-- '.__('common.select_union').' --</option>';
             foreach($data as $v)
             {
-                $output.='<option value="'.$v->id.'">'.$v->title.'</option>';
+                if(config('app.locale') == 'en')
+                {
+                    $title = $v->title ?: $v->title_bn;
+                }
+                else{
+                    $title = $v->title_bn ?: $v->title;
+                }
+                $output.='<option value="'.$v->id.'">'.$title.'</option>';
             }
             $output.='</select>';
             return $output;
         }
         else
         {
-            return '<b class="text-danger">No Union Found!</b>';
+            return '<b class="text-danger">'.__('common.no_union').'</b>';
         }
     }
 

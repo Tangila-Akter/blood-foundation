@@ -60,11 +60,11 @@ class VillageRepository implements VillageInterface
                 Village::create($data);
             }
 
-            return response()->json(['success' => 'Village Created Successfully']);
+            return response()->json(['success' => __('village.create_message')]);
         }
         else
         {
-            return response()->json(['error' => 'Village Not Created!']);
+            return response()->json(['error' => __('village.create_error')]);
         }
     }
 
@@ -83,11 +83,11 @@ class VillageRepository implements VillageInterface
         $insert = Village::find($id)->update($data);
         if($insert)
         {
-            return response()->json(['success' => 'Village Updated Successfully']);
+            return response()->json(['success' => __('village.update_message')]);
         }
         else
         {
-            return response()->json(['error' => 'Village Updated Unsuccessfully']);
+            return response()->json(['error' => __('village.update_error')]);
         }
 
     }
@@ -96,10 +96,10 @@ class VillageRepository implements VillageInterface
     {
         try {
             Village::find($id)->delete();
-            return response()->json(['success' => 'Village Deleted Successfully']);
+            return response()->json(['success' => __('village.delete_message')]);
         } catch (\Throwable $th)
         {
-            return response()->json(['error' => 'Village Deleted Unsuccessfully']);
+            return response()->json(['error' => __('village.delete_error')]);
         }
     }
 

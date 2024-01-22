@@ -22,10 +22,10 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item show-modal" data-url="{{ route('admin.ward.edit',$data->id) }}">
-                                    <i class="fa fa-fw fa-pencil-alt me-1"></i> Edit
+                                    <i class="fa fa-fw fa-pencil-alt me-1"></i> @lang('common.edit')
                                 </a>
                                 <a class="dropdown-item text-danger show-modal" data-url="{{ route('admin.ward.delete_confirm', $data->id) }}">
-                                    <i class="fa fa-fw fa-times me-1"></i> Delete
+                                    <i class="fa fa-fw fa-times me-1"></i> @lang('common.delete')
                                 </a>
                             </div>
                         </div>

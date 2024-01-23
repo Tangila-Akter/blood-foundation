@@ -11,6 +11,7 @@ Organization speece
   <div class="block-content block-content-full">
     <form action="{{route('admin.developer.update',$data->id)}}" method="post" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div>
         <label>Name:</label>
         <input class="form-control" name="name"  value="{{$data->name}}" >

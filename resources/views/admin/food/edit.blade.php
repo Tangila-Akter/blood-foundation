@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-Carousel
+Food For All
 @endsection
 
 
@@ -11,6 +11,7 @@ Carousel
   <div class="block-content block-content-full">
     <form action="{{route('admin.food.update',$data->id)}}" method="post" enctype="multipart/form-data">
       @csrf
+      @method('PUT')
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
           <label>Name:</label>

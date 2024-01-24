@@ -28,8 +28,16 @@ Organization speece
             <input class="form-control" name="name"  placeholder="Write a name" >
         </div>
         <div>
+            <label>Bangla Name:</label>
+            <input class="form-control" name="bn_name"  placeholder="Write a bangla name" >
+        </div>
+        <div>
             <label>Position:</label>
             <input class="form-control" name="Position"  placeholder="Write your position" >
+        </div>
+        <div>
+            <label>Bangla Position:</label>
+            <input class="form-control" name="bn_Position"  placeholder="Write your position" >
         </div>
         <div>
             <label>Social Media Link:</label>
@@ -38,6 +46,10 @@ Organization speece
         <div>
             <label>Description:</label>
             <textarea class="form-control" name="Description" rows="3"></textarea>
+        </div>
+        <div>
+            <label>Bangla Description:</label>
+            <textarea class="form-control" name="bn_Description" rows="3"></textarea>
         </div>
 
         <div>
@@ -62,21 +74,27 @@ Organization speece
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Social Media Link</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Action</th>
+            <th>Name</th>
+            <th>Bangla Name</th>
+            <th>Position</th>
+            <th>Bangla Position</th>
+            <th>Social Media Link</th>
+            <th>Description</th>
+            <th>Bangla Description</th>
+            <th>Image</th>
+            <th>Action</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $data)
             <tr>
                 <td>{{ $data->name }}</td>
+                <td>{{ $data->bn_name }}</td>
                 <td>{{ $data->Position }}</td>
+                <td>{{ $data->bn_Position }}</td>
                 <td>{{ $data->SocialMediaLink }}</td>
                 <td>{{ $data->Description }}</td>
+                <td>{{ $data->bn_Description }}</td>
                 <td><img height="100" width="100" src="../developer/{{ $data->image }}"></td>
                 <td>
                     <a style="float: left;margin-right:10px;" class="btn btn-warning" href="{{route('admin.developer.edit',$data->id)}}">Edit</a>
@@ -92,11 +110,14 @@ Organization speece
         <tfoot>
             <tr>
             <th>Name</th>
-                <th>Position</th>
-                <th>Social Media Link</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Action</th>
+            <th>Bangla Name</th>
+            <th>Position</th>
+            <th>Bangla Position</th>
+            <th>Social Media Link</th>
+            <th>Description</th>
+            <th>Bangla Description</th>
+            <th>Image</th>
+            <th>Action</th>
             </tr>
         </tfoot>
     </table>

@@ -14,12 +14,13 @@ Marquee
       @method('PUT')
       <div>
           <label>Message:</label>
-          <input class="form-control" name="text"  value="{{$data->text}}" >
+          <textarea class="form-control" name="text"  value="" >{{$data->text}}</textarea>
       </div>
 
-
-
-
+      <div>
+          <label>Bangla Message:</label>
+          <textarea class="form-control" name="bn_text"  value="" >{{$data->bn_text}}</textarea>
+      </div>
       </div>
       <div class="modal-footer">
 

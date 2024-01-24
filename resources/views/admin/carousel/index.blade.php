@@ -27,7 +27,10 @@ Carousel
             <label>Title:</label>
             <input class="form-control" name="title"  placeholder="Write a title" >
         </div>
-
+        <div>
+            <label>Bangla Title:</label>
+            <input class="form-control" name="bn_title"  placeholder="Write a bangla title" >
+        </div>
         <div>
             <label>Image:</label>
             <input class="form-control" name="image" type="file">
@@ -51,6 +54,7 @@ Carousel
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Bangla Name</th>
                 <th>Image</th>
                 <th>Action</th>
             </tr>
@@ -59,6 +63,7 @@ Carousel
             @foreach ($data as $data)
             <tr>
                 <td>{{ $data->title }}</td>
+                <td>{{ $data->bn_title }}</td>
                 <td><img height="100" width="100" src="../carousel/{{ $data->image }}"></td>
                 <td>
                     <a style="float: left;margin-right:10px;" class="btn btn-warning" href="{{route('admin.carousel.edit',$data->id)}}">Edit</a>
@@ -74,6 +79,7 @@ Carousel
         <tfoot>
             <tr>
                 <th>Name</th>
+                <th>Bangla Name</th>
                 <th>Image</th>
                 <th>Action</th>
             </tr>

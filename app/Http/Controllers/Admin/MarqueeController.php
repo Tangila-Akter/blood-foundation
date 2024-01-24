@@ -40,6 +40,7 @@ class MarqueeController extends Controller
         $data = new Marquee;
 
          $data->text = $request->text;
+         $data->bn_text = $request->bn_text;
          $data->save();
 
         return redirect()->back();
@@ -80,6 +81,8 @@ class MarqueeController extends Controller
         $data = Marquee::find($id);
 
         $data->text = $request->text;
+        
+        $data->bn_text = $request->bn_text;
         $data->update();
         return redirect()->route('admin.marquee.index');
     }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Carousel;
 use Illuminate\Http\Request;
+use App\Models\Health;
 
-class CarouselController extends Controller
+class HealthController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        $data = Carousel::all();
-        return view('admin.carousel.index', compact('data'));
+        $data = Health::all();
+        return view('admin.health.index', compact('data'));
     }
 
     /**
@@ -37,13 +37,15 @@ class CarouselController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Carousel;
+        $data = new Health;
         $image=$request->image;
          $imagename=time().'.'.$image->getClientOriginalExtension() ;
-         $request->image->move('carousel',$imagename);
+         $request->image->move('health',$imagename);
          $data->image=$imagename;
-         $data->title = $request->title;
-         $data->bn_title = $request->bn_title;
+         $data->name = $request->name;
+         $data->bn_name = $request->bn_name;
+         $data->text = $request->text;
+         $data->bn_text = $request->bn_text;
          $data->save();
 
         return redirect()->back();
@@ -52,10 +54,10 @@ class CarouselController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show( $r)
+    public function show($id)
     {
         //
     }
@@ -63,29 +65,29 @@ class CarouselController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Carousel::find($id);
-        return view('admin.carousel.edit', compact('data'));
+        $data = Health::find($id);
+        return view('admin.health.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data = Carousel::find($id);
+        $data = Health::find($id);
         $file = $request->file('image');
         if($file)
         {
-            $path = public_path().'/carousel/'.$data->image;
+            $path = public_path().'/health/'.$data->image;
             if(file_exists($path))
             {
                 unlink($path);
@@ -95,27 +97,29 @@ class CarouselController extends Controller
         if($file)
         {
             $imagename=time().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path().'/carousel/',$imagename);
+            $file->move(public_path().'/health/',$imagename);
             $data->image = $imagename;
         }
 
-        $data->bn_title = $request->bn_title;
-        $data->title = $request->title;
+        $data->name = $request->name;
+         $data->bn_name = $request->bn_name;
+         $data->text = $request->text;
+         $data->bn_text = $request->bn_text;
         $data->update();
-        return redirect()->route('admin.carousel.index');
+        return redirect()->route('admin.health.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data = Carousel::find($id);
-        if (file_exists('carousel/'.$data->image)) {
-            unlink('carousel/'. $data->image);
+        $data = Health::find($id);
+        if (file_exists('health/'.$data->image)) {
+            unlink('health/'. $data->image);
         }
         $data->delete();
         return redirect()->back();

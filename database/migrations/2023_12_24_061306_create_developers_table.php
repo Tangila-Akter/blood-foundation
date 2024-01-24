@@ -20,6 +20,9 @@ class CreateDevelopersTable extends Migration
             $table->string('SocialMediaLink')->nullable();
             $table->string('Position')->nullable();
             $table->String('Description',10240)->nullable();
+            $table->string('bn_name')->nullable();
+            $table->string('bn_Position')->nullable();
+            $table->String('bn_Description',10240)->nullable();
             $table->timestamps();
         });
     }

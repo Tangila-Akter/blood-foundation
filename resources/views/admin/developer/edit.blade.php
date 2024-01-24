@@ -17,8 +17,16 @@ Organization speece
         <input class="form-control" name="name"  value="{{$data->name}}" >
     </div>
     <div>
+            <label>Bangla Name:</label>
+            <input class="form-control" name="bn_name"  value="{{$data->bn_name}}">
+        </div>
+    <div>
         <label>Position:</label>
         <input class="form-control" name="Position"  value="{{$data->Position}}"  >
+    </div>
+    <div>
+        <label>Bangla Position:</label>
+        <input class="form-control" name="bn_Position"  value="{{$data->bn_Position}}"  >
     </div>
     <div>
         <label>Social Media Link:</label>
@@ -27,6 +35,10 @@ Organization speece
     <div>
         <label>Description:</label>
         <textarea class="form-control" name="Description" rows="3"></textarea>
+    </div>
+    <div>
+        <label>Bangla Description:</label>
+        <textarea class="form-control" name="bn_Description" rows="3"></textarea>
     </div>
 
       <div>

@@ -16,7 +16,10 @@ Carousel
         <label>Title:</label>
         <input class="form-control" name="title"  value="{{$data->title}}" >
     </div>
-
+    <div>
+        <label>Bangla Title:</label>
+        <input class="form-control" name="bn_title"  value="{{$data->bn_title}}" >
+    </div>
       <div>
           <label>Image:</label>
           <input class="form-control" name="image" type="file">

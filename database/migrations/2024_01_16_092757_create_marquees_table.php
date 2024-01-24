@@ -16,6 +16,7 @@ class CreateMarqueesTable extends Migration
         Schema::create('marquees', function (Blueprint $table) {
             $table->id();
             $table->string('text')->nullable();
+            $table->string('bn_text')->nullable();
             $table->timestamps();
         });
     }

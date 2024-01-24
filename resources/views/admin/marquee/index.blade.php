@@ -27,7 +27,10 @@ Marquee
             <label>Message:</label>
             <textarea class="form-control" name="text"  placeholder="Write a message" ></textarea>
         </div>
-
+        <div>
+            <label>Bangla Message:</label>
+            <textarea class="form-control" name="text"  placeholder="Write a bangla message" ></textarea>
+        </div>
 
 
         </div>
@@ -48,6 +51,7 @@ Marquee
         <thead>
             <tr>
                 <th>Message</th>
+                <th>Bangla Message</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -55,6 +59,7 @@ Marquee
             @foreach ($data as $data)
             <tr>
                 <td>{{ $data->text }}</td>
+                <td>{{ $data->bn_text }}</td>
                 <td>
                     <a style="float: left;margin-right:10px;" class="btn btn-warning" href="{{route('admin.marquee.edit',$data->id)}}">@lang('common.edit')</a>
                     <form method="post" action="{{ route('admin.marquee.destroy',$data->id) }}">
@@ -69,6 +74,7 @@ Marquee
         <tfoot>
             <tr>
               <th>Message</th>
+              <th>Bangla Message</th>
               <th>Action</th>
             </tr>
         </tfoot>

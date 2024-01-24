@@ -46,6 +46,10 @@ class DeveloperController extends Controller
          $data->Position = $request->Position;
          $data->SocialMediaLink = $request->SocialMediaLink;
          $data->Description = $request->Description;
+
+         $data->bn_name = $request->bn_name;
+         $data->bn_Position = $request->bn_Position;
+         $data->bn_Description = $request->bn_Description;
          $data->save();
 
         return redirect()->back();
@@ -70,7 +74,8 @@ class DeveloperController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Developer::find($id);
+        return view('admin.developer.edit', compact('data'));
     }
 
     /**
@@ -82,7 +87,29 @@ class DeveloperController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Developer::find($id);
+        $file = $request->file('image');
+        if($file)
+        {
+            $path = public_path().'/developer/'.$data->image;
+            if(file_exists($path))
+            {
+                unlink($path);
+            }
+        }
+
+        if($file)
+        {
+            $imagename=time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path().'/developer/',$imagename);
+            $data->image = $imagename;
+        }
+
+        $data->bn_name = $request->bn_name;
+         $data->bn_Position = $request->bn_Position;
+         $data->bn_Description = $request->bn_Description;
+        $data->update();
+        return redirect()->route('admin.developer.index');
     }
 
     /**
@@ -93,6 +120,11 @@ class DeveloperController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Developer::find($id);
+        if (file_exists('developer/'.$data->image)) {
+            unlink('developer/'. $data->image);
+        }
+        $data->delete();
+        return redirect()->back();
     }
 }

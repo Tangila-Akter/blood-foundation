@@ -164,6 +164,18 @@
                         <span class="nav-main-link-name">Food for all</span>
                     </a>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Route::currentRouteName() == 'admin.health.index' ? 'active' : '' }}" href="{{ route('admin.health.index') }}">
+                        <i class="nav-main-link-icon fa fa-border-all"></i>
+                        <span class="nav-main-link-name">Health</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link {{ Route::currentRouteName() == 'admin.education.index' ? 'active' : '' }}" href="{{ route('admin.education.index') }}">
+                        <i class="nav-main-link-icon fa fa-border-all"></i>
+                        <span class="nav-main-link-name">Education</span>
+                    </a>
+                </li>
 
             </ul>
         </div>

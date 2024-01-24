@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\DivisionController;
+use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\HealthController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\UnionController;
 use App\Http\Controllers\Admin\UpazillaController;
@@ -141,6 +143,12 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
         //============ Food for all =============
         Route::resource('food',FoodController::class);
+
+        //============ Health =============
+        Route::resource('health',HealthController::class);
+
+        //============ Education =============
+        Route::resource('education',EducationController::class);
 
 
     });

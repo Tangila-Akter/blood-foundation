@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\CarouselController;
 use App\Http\Controllers\Admin\FoodController;
 use App\Http\Controllers\Admin\MarqueeController;
 use App\Http\Controllers\Admin\SponsorController;
-
+use App\Http\Controllers\Admin\MenuLayerController;
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::get('login', [AdminAuthController::class, 'login'])->name('login');
@@ -149,6 +149,14 @@ Route::prefix('admin')->as('admin.')->group(function () {
 
         //============ Education =============
         Route::resource('education',EducationController::class);
+
+        /**
+         * Menu Layer Route
+         */
+
+         Route::resources([
+            'menu_layer' => MenuLayerController::class
+        ]);
 
 
     });
